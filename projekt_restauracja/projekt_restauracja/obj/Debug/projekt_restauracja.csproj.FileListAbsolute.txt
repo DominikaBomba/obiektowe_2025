@@ -1,0 +1,7 @@
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.exe.config
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.exe
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.pdb
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.csproj.AssemblyReference.cache
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.csproj.CoreCompileInputs.cache
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.exe
+C:\Users\Dominika Bomba\Desktop\Informatyka\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.pdb
