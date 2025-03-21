@@ -4,38 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using projekt_restauracja.Services;
 
 namespace projekt_restauracja.Models
 {
+    /*
     public class AuthenticationService
     {
-        private Dictionary<string, string> userCredentials = new Dictionary<string, string>();
+        private List<User> users = new List<User>(); // List of Users
 
         public AuthenticationService()
         {
             LoadUsers();
         }
 
+        // Load Users without storing passwords in plain text
         private void LoadUsers()
         {
-            string[] lines = File.ReadAllLines("Data/users.txt");
-            foreach (var line in lines.Skip(1))  // Skip header
+            string[] lines = File.ReadAllLines("userPasswords.txt");
+            foreach (var line in lines.Skip(1))  // Skip header if present
             {
                 var parts = line.Split(',');
-                if (parts.Length == 2)
+                if (parts.Length >= 1)
                 {
-                    userCredentials[parts[0]] = parts[1];  // username -> password
+                    users.Add(new User(parts[0], "")); // Password is not stored here
                 }
             }
         }
 
         public User Authenticate(string username, string password)
         {
-            if (userCredentials.TryGetValue(username, out string storedPassword) && storedPassword == password)
+            if (PasswordManager.VerifyPassword(username, password))
             {
-                return new User(username, password);
+                return users.FirstOrDefault(u => u.Username == username);
             }
             return null;
         }
-    }
+    }*/
 }

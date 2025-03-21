@@ -25,13 +25,13 @@ namespace projekt_restauracja.Services
         {
             if (File.ReadLines(_passwordFilePath).Any(line => line.Split(',')[0] == username))
             {
-                Console.WriteLine($"Użytkownik {username} już istnieje w systemie");
+                Console.WriteLine($"User {username} already exists.");
                 return;
             }
 
             string hashedPassword = HashPassword(password);
             File.AppendAllText(_passwordFilePath, $"{username},{hashedPassword}\n");
-            Console.WriteLine($"Użytkownik {username} został zapisany");
+            Console.WriteLine($"User {username} has been saved.");
         }
 
         public static bool VerifyPassword(string username, string password)

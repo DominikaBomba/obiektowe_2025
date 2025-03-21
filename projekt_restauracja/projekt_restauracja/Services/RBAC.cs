@@ -8,46 +8,38 @@ using System.Threading.Tasks;
 
 namespace projekt_restauracja.Services
 {
-    public enum Role
-    {
-        Admin,
-        Customer,
-        Chef,
-        Waiter
-    }
     public enum Permission
     {
-        UpdateMenu,
-        OrderDish
-        ,
-        ManageUsers
+        ManageMenu,
+        ViewMenu,
+        PlaceOrder,
+        ChangeOrderStatus,
+        ViewLogs,
+        ProcessPayments,
+        ViewOrders,
+        ServeOrder,
+        CheckOrderStatus
     }
     internal class RBAC
     {
 
-        private readonly Dictionary<Role, List<Permission>> _rolePermissions;
+        private readonly Dictionary<UserRole, List<Permission>> _rolePermissions;
 
 
         public RBAC()
         {
-            _rolePermissions = new Dictionary<Role, List<Permission>>
+            _rolePermissions = new Dictionary<UserRole, List<Permission>>
             {
-                    { Role.Admin, new List<Permission>{ }},
-                    { Role.Customer, new List<Permission>{ } },
-                    { Role.Waiter, new List<Permission>{ } }
-                };
+                { UserRole.Admin, new List<Permission> { Permission.ManageMenu, Permission.ViewMenu, Permission.PlaceOrder, Permission.ChangeOrderStatus, Permission.ViewLogs, Permission.ProcessPayments } },
+                { UserRole.Customer, new List<Permission> { Permission.ViewMenu, Permission.PlaceOrder, Permission.CheckOrderStatus, Permission.ProcessPayments } },
+                { UserRole.Chef, new List<Permission> { Permission.ViewOrders, Permission.ChangeOrderStatus } },
+                { UserRole.Waiter, new List<Permission> { Permission.ViewOrders, Permission.ServeOrder } }
+            };
         }
 
         public bool HasPermission(User user, Permission permission)
         {
-            /*foreach (var role in user.Roles)
-            {
-                if (_rolePermissions.ContainsKey(role) && _rolePermissions[role].Contains(permission))
-                {
-                    return true;
-                }
-            }*/
-            return false;
+            return user.Roles.Any(role => _rolePermissions.ContainsKey(role) && _rolePermissions[role].Contains(permission));
         }
 
 
