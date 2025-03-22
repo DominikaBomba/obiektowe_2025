@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace projekt_restauracja
 {
+    public enum UserRole
+    {
+        Admin, Customer, Waiter, Chef
+    }
     class Program
     {
         static void Main()
@@ -21,15 +25,24 @@ namespace projekt_restauracja
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
 
             Menu m1 = new Menu(filePath);
-            
+
 
 
             //RBAC rbacSystem = new RBAC();
 
-            PasswordManager.SavePassword("AdminUser", "adminPassword");
+
+            /*
+            PasswordManager.SavePassword("a", "a");
             PasswordManager.SavePassword("Waiter", "managerPassword");
             PasswordManager.SavePassword("Customer", "userPassword");
             PasswordManager.SavePassword("Chef", "chefPassword");
+            */
+            PasswordManager.AddUser("a", "a", UserRole.Admin);
+            PasswordManager.AddUser("waiter", "a", UserRole.Waiter);
+            PasswordManager.AddUser("chef", "a", UserRole.Chef);
+            PasswordManager.AddUser("customer", "a", UserRole.Customer);
+            PasswordManager.AddUser("customer2", "a", UserRole.Customer);
+
             
 
             bool exitProgram = false;
@@ -54,111 +67,101 @@ namespace projekt_restauracja
                 }
 
                 loggedIn = true;
-
-                var user = new User(username);
-                if (username == "AdminUser") user.AddRole(UserRole.Admin);
-                else if (username == "Waiter") user.AddRole(UserRole.Waiter);
-                else if (username == "Customer") user.AddRole(UserRole.Customer);
-                else if (username == "Chef") user.AddRole(UserRole.Chef); 
-
+                
+                var user = new User(username, PasswordManager.GetUserRoles(username));
+                
                 var rbacSystem = new RBAC();
 
+                
 
                 while (loggedIn)
                 {
+                    List<string> menuOptions = new List<string>();
+                    Dictionary<int, Action> menuActions = new Dictionary<int, Action>();
+
+                    int optionNumber = 1; // Dynamic numbering
+
+                    // Add available options dynamically and map actions
+                    if (rbacSystem.HasPermission(user, Permission.ManageMenu))
+                    {
+                        menuOptions.Add("Manage menu");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Menu changed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ViewMenu))
+                    {
+                        menuOptions.Add("View menu");
+                        menuActions[optionNumber++] = () => m1.DisplayMenu();
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.PlaceOrder))
+                    {
+                        menuOptions.Add("Place an order");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Order placed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
+                    {
+                        menuOptions.Add("Change order status");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Order status changed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ViewLogs))
+                    {
+                        menuOptions.Add("View logs");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Logs viewed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
+                    {
+                        menuOptions.Add("Process payments");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Payments processed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ViewOrders))
+                    {
+                        menuOptions.Add("View orders");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Orders viewed...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.ServeOrder))
+                    {
+                        menuOptions.Add("Serve order");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Order served...");
+                    }
+                    if (rbacSystem.HasPermission(user, Permission.CheckOrderStatus))
+                    {
+                        menuOptions.Add("Check order status");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Status shown...");
+                    }
+
+                    // Always available options
+                    menuOptions.Add("Log out");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        Console.WriteLine("Logged out");
+                        loggedIn = false;
+                    };
+
+                    menuOptions.Add("Exit the program");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        Console.WriteLine("Closing the program");
+                        Environment.Exit(0);
+                    };
+
+                    // Display menu options
                     Console.Clear();
                     Console.WriteLine($"Logged in as: {username}");
                     Console.WriteLine("\nChoose an option:");
-
-                    List<string> menuOptions = new List<string>();
-
-                    // Dodajemy dostępne opcje do listy
-                    if (rbacSystem.HasPermission(user, Permission.ViewMenu))
-                        menuOptions.Add("View menu");
-                    if (rbacSystem.HasPermission(user, Permission.PlaceOrder))
-                        menuOptions.Add("Place an order");
-                    if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
-                        menuOptions.Add("Change order status");
-                    if (rbacSystem.HasPermission(user, Permission.ViewLogs))
-                        menuOptions.Add("View logs");
-                    if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
-                        menuOptions.Add("Process payments");
-                    if (rbacSystem.HasPermission(user, Permission.ViewOrders))
-                        menuOptions.Add("View orders");
-                    if (rbacSystem.HasPermission(user, Permission.ServeOrder))
-                        menuOptions.Add("Serve order");
-
-                    menuOptions.Add("Log out");
-                    menuOptions.Add("Exit the program");
-
-                    // Wyświetlanie dostępnych opcji z numerami
                     for (int i = 0; i < menuOptions.Count; i++)
                     {
-                        Console.WriteLine($"{i + 1}.aaa {menuOptions[i]}");
+                        Console.WriteLine($"{i + 1}. {menuOptions[i]}");
                     }
 
+                    // Get user choice
                     int choice;
-                    if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > menuOptions.Count)
+                    if (!int.TryParse(Console.ReadLine(), out choice) || !menuActions.ContainsKey(choice))
                     {
                         Console.WriteLine("Invalid choice. Please try again.");
-                        continue;
                     }
-
-                    // Obsługa wyboru użytkownika
-                    switch (choice)
+                    else
                     {
-                        case 1:
-                            if (rbacSystem.HasPermission(user, Permission.ViewMenu))
-                                m1.DisplayMenu();
-                            else
-                                Console.WriteLine("You don't have permission to view the menu.");
-                            break;
-                        case 2:
-                            if (rbacSystem.HasPermission(user, Permission.PlaceOrder))
-                                Console.WriteLine("Order placed...");
-                            else
-                                Console.WriteLine("You don't have permission to place an order.");
-                            break;
-                        case 3:
-                            if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
-                                Console.WriteLine("Order status changed...");
-                            else
-                                Console.WriteLine("You don't have permission to change the order status.");
-                            break;
-                        case 4:
-                            if (rbacSystem.HasPermission(user, Permission.ViewLogs))
-                                Console.WriteLine("Logs viewed...");
-                            else
-                                Console.WriteLine("You don't have permission to view the logs.");
-                            break;
-                        case 5:
-                            if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
-                                Console.WriteLine("Payments processed...");
-                            else
-                                Console.WriteLine("You don't have permission to process payments.");
-                            break;
-                        case 6:
-                            if (rbacSystem.HasPermission(user, Permission.ViewOrders))
-                                Console.WriteLine("Orders viewed...");
-                            else
-                                Console.WriteLine("You don't have permission to view orders.");
-                            break;
-                        case 7:
-                            if (rbacSystem.HasPermission(user, Permission.ServeOrder))
-                                Console.WriteLine("Order served...");
-                            else
-                                Console.WriteLine("You don't have permission to serve orders.");
-                            break;
-                        case 8:
-                            Console.WriteLine("Logged out");
-                            loggedIn = false;
-                            break;
-                        case 9:
-                            Console.WriteLine("Closing the program");
-                            return;
-                        default:
-                            Console.WriteLine("Invalid choice");
-                            break;
+                        // Execute the selected action
+                        menuActions[choice]();
                     }
 
                     Console.ReadKey();

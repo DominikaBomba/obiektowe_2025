@@ -1,6 +1,7 @@
 ﻿using projekt_restauracja.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -48,7 +49,8 @@ namespace projekt_restauracja.Models
                 var parts = line.Split(',');
                
                 
-                    int price = int.Parse(parts[0]);
+                    float price = float.Parse(parts[0], CultureInfo.InvariantCulture.NumberFormat);
+                    
                     string category = parts[1];
                     string dishName = parts[2];
 
@@ -57,7 +59,7 @@ namespace projekt_restauracja.Models
             }
         }
 
-        public void AddDish(string name, int price, Category category)
+        public void AddDish(string name, float price, Category category)
         {
             if (Dishes.Any(d => d.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
             {
@@ -83,7 +85,7 @@ namespace projekt_restauracja.Models
             }
         }
 
-        public void ModifyPrice(string name, int newPrice)
+        public void ModifyPrice(string name, float newPrice)
         {
             var dishToModify = Dishes.FirstOrDefault(d => d.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (dishToModify != null)
