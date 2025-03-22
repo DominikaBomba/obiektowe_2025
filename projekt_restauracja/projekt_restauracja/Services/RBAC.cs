@@ -30,10 +30,28 @@ namespace projekt_restauracja.Services
         {
             _rolePermissions = new Dictionary<UserRole, List<Permission>>
             {
-                { UserRole.Admin, new List<Permission> { Permission.ManageMenu, Permission.ViewMenu, Permission.PlaceOrder, Permission.ChangeOrderStatus, Permission.ViewLogs, Permission.ProcessPayments } },
-                { UserRole.Customer, new List<Permission> { Permission.ViewMenu, Permission.PlaceOrder, Permission.CheckOrderStatus, Permission.ProcessPayments } },
-                { UserRole.Chef, new List<Permission> { Permission.ViewOrders, Permission.ChangeOrderStatus } },
-                { UserRole.Waiter, new List<Permission> { Permission.ViewOrders, Permission.ServeOrder } }
+                { 
+                UserRole.Admin, new List<Permission> { 
+                    Permission.ManageMenu, 
+                    Permission.ViewMenu, 
+                    Permission.PlaceOrder,
+                    Permission.ChangeOrderStatus, 
+                    Permission.ViewLogs, 
+                    Permission.ProcessPayments}},
+                { 
+                UserRole.Customer, new List<Permission> { 
+                    Permission.ViewMenu, 
+                    Permission.PlaceOrder, 
+                    Permission.CheckOrderStatus, 
+                    Permission.ProcessPayments } },
+                { 
+                UserRole.Chef, new List<Permission> { 
+                    Permission.ViewOrders, 
+                    Permission.ChangeOrderStatus } },
+                { 
+                UserRole.Waiter, new List<Permission> { 
+                    Permission.ViewOrders, 
+                    Permission.ServeOrder } }
             };
         }
 
