@@ -94,7 +94,7 @@ namespace projekt_restauracja
                     // Wyświetlanie dostępnych opcji z numerami
                     for (int i = 0; i < menuOptions.Count; i++)
                     {
-                        Console.WriteLine($"{i + 1}. {menuOptions[i]}");
+                        Console.WriteLine($"{i + 1}.aaa {menuOptions[i]}");
                     }
 
                     int choice;
