@@ -69,29 +69,42 @@ namespace projekt_restauracja
                     Console.Clear();
                     Console.WriteLine($"Logged in as: {username}");
                     Console.WriteLine("\nChoose an option:");
-                    Console.WriteLine("1. View menu");
+
+                    List<string> menuOptions = new List<string>();
+
+                    // Dodajemy dostępne opcje do listy
+                    if (rbacSystem.HasPermission(user, Permission.ViewMenu))
+                        menuOptions.Add("View menu");
                     if (rbacSystem.HasPermission(user, Permission.PlaceOrder))
-                        Console.WriteLine("2. Place an order");
+                        menuOptions.Add("Place an order");
                     if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
-                        Console.WriteLine("3. Change order status");
+                        menuOptions.Add("Change order status");
                     if (rbacSystem.HasPermission(user, Permission.ViewLogs))
-                        Console.WriteLine("4. View logs");
+                        menuOptions.Add("View logs");
                     if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
-                        Console.WriteLine("5. Process payments");
+                        menuOptions.Add("Process payments");
                     if (rbacSystem.HasPermission(user, Permission.ViewOrders))
-                        Console.WriteLine("6. View orders");
+                        menuOptions.Add("View orders");
                     if (rbacSystem.HasPermission(user, Permission.ServeOrder))
-                        Console.WriteLine("7. Serve order");
-                    Console.WriteLine("8. Log out");
-                    Console.WriteLine("9. Exit the program");
+                        menuOptions.Add("Serve order");
+
+                    menuOptions.Add("Log out");
+                    menuOptions.Add("Exit the program");
+
+                    // Wyświetlanie dostępnych opcji z numerami
+                    for (int i = 0; i < menuOptions.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {menuOptions[i]}");
+                    }
 
                     int choice;
-                    if (!int.TryParse(Console.ReadLine(), out choice))
+                    if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > menuOptions.Count)
                     {
                         Console.WriteLine("Invalid choice. Please try again.");
                         continue;
                     }
 
+                    // Obsługa wyboru użytkownika
                     switch (choice)
                     {
                         case 1:
@@ -150,6 +163,8 @@ namespace projekt_restauracja
 
                     Console.ReadKey();
                 }
+
+
 
 
                 /*

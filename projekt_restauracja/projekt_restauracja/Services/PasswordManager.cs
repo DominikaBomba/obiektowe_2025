@@ -58,5 +58,28 @@ namespace projekt_restauracja.Services
                 return Convert.ToBase64String(bytes);
             }
         }
+
+        public static void AddUser(string username, string password, string role)
+        {
+            if (File.ReadLines(_passwordFilePath).Any(line => line.Split(',')[0] == username))
+            {
+                Console.WriteLine($"User {username} already exists.");
+                return;
+            }
+
+            // haslo
+            string hashedPassword = HashPassword(password);
+            File.AppendAllText(_passwordFilePath, $"{username},{hashedPassword}\n");
+
+            // rola
+            string rolesFilePath = "userRoles.txt";
+            if (!File.Exists(rolesFilePath))
+                File.Create(rolesFilePath).Dispose();
+            File.AppendAllText(rolesFilePath, $"{username},{role}\n");
+
+            Console.WriteLine($"User {username} added with role {role}.");
+        }
+
+
     }
 }

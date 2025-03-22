@@ -12,3 +12,10 @@ C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restaura
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.csproj.CoreCompileInputs.cache
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.exe
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.pdb
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.exe.config
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.exe
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\projekt_restauracja.pdb
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.csproj.AssemblyReference.cache
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.csproj.CoreCompileInputs.cache
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.exe
+C:\Users\Dominika Bomba\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.pdb
