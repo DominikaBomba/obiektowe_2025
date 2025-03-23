@@ -37,7 +37,10 @@ namespace projekt_restauracja.Services
                     Permission.PlaceOrder,
                     Permission.ChangeOrderStatus, 
                     Permission.ViewLogs, 
-                    Permission.ProcessPayments}},
+                    Permission.ProcessPayments,
+                    Permission.ViewOrders,
+                    Permission.ServeOrder,
+                    Permission.CheckOrderStatus}},
                 { 
                 UserRole.Customer, new List<Permission> { 
                     Permission.ViewMenu, 

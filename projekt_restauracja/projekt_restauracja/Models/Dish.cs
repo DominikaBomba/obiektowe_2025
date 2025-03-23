@@ -5,10 +5,10 @@ namespace projekt_restauracja.Models
     internal class Dish
     {
         public string Name { get; set; }
-       public int  Price { get; set; }
+        public float Price { get; set; }
         public Category Category { get; set; }
 
-        public Dish(string name, int price, Category category)
+        public Dish(string name, float price, Category category)
         {
             Name = name;
             Price = price;
@@ -17,7 +17,7 @@ namespace projekt_restauracja.Models
 
         public override string ToString()
         {
-            return $"{Name} - {Price} zł ";
+            return $"{Name} - {Price:F2} zł ";
         }
     }
 }
