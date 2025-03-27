@@ -21,6 +21,8 @@ namespace projekt_restauracja
     {
         static void Main()
         {
+            OrderManager orderManager = new OrderManager();
+
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             // Wyjście dwa poziomy wyżej: bin\Debug\ -> projekt_restauracja\ -> projekt_restauracja\
             string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
@@ -61,8 +63,30 @@ namespace projekt_restauracja
                 loggedIn = true;
                 var user = new User(username, PasswordManager.GetUserRoles(username));
 
-                var rbacSystem = new RBAC();
 
+
+
+                var order1 = new Order("customer1");
+                order1.AddDish(new Dish("Pizza", 25.99f, Category.Main));
+                order1.AddDish(new Dish("Coke", 5.50f, Category.Beverage));
+                order1.AddDish(new Dish("Pasta", 30.00f, Category.Main));
+
+                orderManager.AddOrder(order1);
+
+                // ✅ Kucharz gotuje
+                order1.MarkAsCooked();
+
+                // ✅ Kelner podaje
+                order1.MarkAsServed();
+
+                // ✅ Kasjer oznacza jako zapłacone
+                order1.MarkAsPaid();
+
+                // 🖥️ Wyświetlenie zamówienia w tabeli
+                order1.DisplayOrder();
+
+                var rbacSystem = new RBAC();
+                Console.ReadKey();
                 while (loggedIn)
                 {
                     List<string> menuOptions = new List<string>();
