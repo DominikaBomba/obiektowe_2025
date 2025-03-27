@@ -84,7 +84,8 @@ namespace projekt_restauracja
 
                 // 🖥️ Wyświetlenie zamówienia w tabeli
                 order1.DisplayOrder();
-
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Console.WriteLine("\uD83C\uDF74");
                 var rbacSystem = new RBAC();
                 Console.ReadKey();
                 while (loggedIn)
@@ -120,6 +121,7 @@ namespace projekt_restauracja
                         menuOptions.Add("View logs");
                         menuActions[optionNumber++] = () => Console.WriteLine("Logs viewed...");
                     }
+                    /*
                     if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
                     {
                         menuOptions.Add("Process payments");
@@ -140,7 +142,7 @@ namespace projekt_restauracja
                         menuOptions.Add("Check order status");
                         menuActions[optionNumber++] = () => Console.WriteLine("Status shown...");
                     }
-
+                    */
                     // Always available options
                     menuOptions.Add("Log out");
                     menuActions[optionNumber++] = () =>
