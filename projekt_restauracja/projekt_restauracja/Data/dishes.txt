@@ -15,3 +15,5 @@
 19,Beverage,Lemonade
 21.22,Main,Pasta
 11.22,Main,Danie1
+18.99,Main,Pierogi
+12.1,Appetizer,Nazwa

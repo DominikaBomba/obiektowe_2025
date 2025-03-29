@@ -11,8 +11,9 @@ namespace projekt_restauracja.Services
     public class PasswordManager
     {
 
-        
-            private static readonly string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        public enum OrderStatus { Placed, Cooked, Served, Paid }
+
+        private static readonly string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             private static readonly string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
 
             private static readonly string _passwordFilePath = Path.Combine(projectDirectory, "Data", "userPasswords.txt");

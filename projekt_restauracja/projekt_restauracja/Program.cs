@@ -17,6 +17,8 @@ namespace projekt_restauracja
     {
         Admin, Customer, Waiter, Chef
     }
+    public enum OrderStatus { Placed, Cooked, Served, Paid }
+
     class Program
     {
         static void Main()
@@ -45,7 +47,7 @@ namespace projekt_restauracja
                 Console.Clear();
 
 
-                Console.WriteLine("=== aaRESTAURANT ===");
+                Console.WriteLine("=== RESTAURANT ===");
 
                 Console.Write("Enter username: ");
                 string username = Console.ReadLine();
@@ -71,19 +73,8 @@ namespace projekt_restauracja
                 order1.AddDish(new Dish("Coke", 5.50f, Category.Beverage));
                 order1.AddDish(new Dish("Pasta", 30.00f, Category.Main));
 
-                orderManager.AddOrder(order1);
 
-                // ✅ Kucharz gotuje
-                order1.MarkAsCooked();
 
-                // ✅ Kelner podaje
-                order1.MarkAsServed();
-
-                // ✅ Kasjer oznacza jako zapłacone
-                order1.MarkAsPaid();
-
-                // 🖥️ Wyświetlenie zamówienia w tabeli
-                order1.DisplayOrder();
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
                 Console.WriteLine("\uD83C\uDF74");
                 var rbacSystem = new RBAC();
@@ -93,56 +84,54 @@ namespace projekt_restauracja
                     List<string> menuOptions = new List<string>();
                     Dictionary<int, Action> menuActions = new Dictionary<int, Action>();
 
-                    int optionNumber = 1; // Dynamic numbering
+                    int optionNumber = 1;
 
-                    // Add available options dynamically and map actions
-                    if (rbacSystem.HasPermission(user, Permission.ManageMenu))
+
+                    //menu - can be seen by clients and admin
+                    if (rbacSystem.HasPermission(user, Permission.ManageMenu) || rbacSystem.HasPermission(user, Permission.ViewMenu))
                     {
-                        menuOptions.Add("Manage menu");
-                        menuActions[optionNumber++] = () => ManageMenu(m1); // Manage menu option
+                        menuOptions.Add("Menu");
+                        menuActions[optionNumber++] = () => OptionMenu(m1, user, rbacSystem);
                     }
-                    if (rbacSystem.HasPermission(user, Permission.ViewMenu))
+                    //orders - can be seen by admin, client, waiter, chef
+                    if (rbacSystem.HasPermission(user, Permission.DisplayOrders) || //admin
+                        rbacSystem.HasPermission(user, Permission.ChangeOrderStatus) || //chef and waiter
+                        rbacSystem.HasPermission(user, Permission.PlaceAnOrder)  //client
+                        )
                     {
-                        menuOptions.Add("View menu");
-                        menuActions[optionNumber++] = () => m1.DisplayMenu();
+                        menuOptions.Add("Orders");
+                        menuActions[optionNumber++] = () => OrderOption(user, rbacSystem, orderManager);
                     }
-                    if (rbacSystem.HasPermission(user, Permission.PlaceOrder))
+
+                    //employees - can only be seen by admin
+                    if (rbacSystem.HasPermission(user, Permission.ManageEmployees))
                     {
-                        menuOptions.Add("Place an order");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Order placed...");
+                        menuOptions.Add("Employees");
+                        menuActions[optionNumber++] = () => Console.WriteLine("employees");
                     }
-                    if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
+
+                    //manage clients
+                    if (rbacSystem.HasPermission(user, Permission.ManageClients))
                     {
-                        menuOptions.Add("Change order status");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Order status changed...");
+                        menuOptions.Add("Clients");
+                        menuActions[optionNumber++] = () => Console.WriteLine("Clients");
                     }
+
+                    //revenues
+                    if (rbacSystem.HasPermission(user, Permission.ViewRevenue))
+                    {
+                        menuOptions.Add("Revenues");
+                        menuActions[optionNumber++] = () => Console.WriteLine("revenue viewed...");
+                    }
+
+                    //logs
                     if (rbacSystem.HasPermission(user, Permission.ViewLogs))
                     {
-                        menuOptions.Add("View logs");
+                        menuOptions.Add("Logs");
                         menuActions[optionNumber++] = () => Console.WriteLine("Logs viewed...");
                     }
-                    /*
-                    if (rbacSystem.HasPermission(user, Permission.ProcessPayments))
-                    {
-                        menuOptions.Add("Process payments");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Payments processed...");
-                    }
-                    if (rbacSystem.HasPermission(user, Permission.ViewOrders))
-                    {
-                        menuOptions.Add("View orders");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Orders viewed...");
-                    }
-                    if (rbacSystem.HasPermission(user, Permission.ServeOrder))
-                    {
-                        menuOptions.Add("Serve order");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Order served...");
-                    }
-                    if (rbacSystem.HasPermission(user, Permission.CheckOrderStatus))
-                    {
-                        menuOptions.Add("Check order status");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Status shown...");
-                    }
-                    */
+
+
                     // Always available options
                     menuOptions.Add("Log out");
                     menuActions[optionNumber++] = () =>
@@ -163,7 +152,7 @@ namespace projekt_restauracja
                     Console.Clear();
                     Console.WriteLine($"Logged in as: {username}");
                     Console.WriteLine("\nChoose an option:");
-
+                    Console.OutputEncoding = System.Text.Encoding.UTF8;
                     // Tworzymy tabelę
                     var table = new Table();
                     table.AddColumn("Option");
@@ -194,92 +183,282 @@ namespace projekt_restauracja
 
                     Console.ReadKey();
                 }
-            
+
             }
         }
 
-        static void ManageMenu(Menu m1)
+
+
+
+        static void OrderOption(User user, RBAC rbacSystem, OrderManager orderManager)
+        {
+            bool manageOrders = true;
+
+            while (manageOrders)
+            {
+                Console.Clear();
+
+                AnsiConsole.MarkupLine("[bold]🍽️ Manage Orders 🍽️[/]");
+
+                Dictionary<int, Action> orderActions = new Dictionary<int, Action>();
+                int orderOptionNumber = 1;
+
+                var table = new Table();
+                table.Border = TableBorder.Rounded;
+                table.AddColumn("[yellow]Option[/]");
+                table.AddColumn("[yellow]Description[/]");
+
+                if (rbacSystem.HasPermission(user, Permission.DisplayOrders))
+                {
+                    table.AddRow(orderOptionNumber.ToString(), "Display all orders");
+                    orderActions[orderOptionNumber++] = () => orderManager.DisplayAllOrders();
+                }
+
+                if (rbacSystem.HasPermission(user, Permission.PlaceAnOrder))
+                {
+                    table.AddRow(orderOptionNumber.ToString(), "Place an Order");
+                    orderActions[orderOptionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+                        string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
+
+                        Menu m = new Menu(filePath);
+                        m.DisplayMenu();
+                        Order newOrder = new Order(user.Username);
+                        newOrder.AddDish(new Dish("makaron", 12, Category.Dessert));
+                        orderManager.AddOrder(newOrder);
+                        AnsiConsole.Markup("[yellow](ZAWSZE DODAJE SIE MAKARON- DO ZMIANY)[/]");
+                    };
+                }
+                if (rbacSystem.HasPermission(user, Permission.CheckOrderStatus))
+                {
+                   
+                    table.AddRow(orderOptionNumber.ToString(), "Check Order Status");
+                    orderActions[orderOptionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        if (user.Roles.Contains(UserRole.Chef))
+                            orderManager.DisplayOrdersByStatus(Order.OrderStatus.Placed);
+                        if (user.Roles.Contains(UserRole.Waiter))
+                            orderManager.DisplayOrdersByStatus(Order.OrderStatus.Cooked);
+                    };
+                }
+
+                if (rbacSystem.HasPermission(user, Permission.ChangeOrderStatus))
+                {
+                    table.AddRow(orderOptionNumber.ToString(), "Change Order Status");
+                    orderActions[orderOptionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        Order.OrderStatus statusToDisplay = user.Roles.Contains(UserRole.Chef) ? Order.OrderStatus.Placed : Order.OrderStatus.Cooked;
+                        orderManager.DisplayOrdersByStatus(statusToDisplay);
+
+                        int orderId = AnsiConsole.Ask<int>("Enter Order ID to change status: ");
+                        var order = orderManager.GetOrderById(orderId);
+                        if (order != null)
+                        {
+                            if (user.Roles.Contains(UserRole.Chef))
+                                order.MarkAsCooked();
+                            else if (user.Roles.Contains(UserRole.Waiter))
+                                order.MarkAsServed();
+                            AnsiConsole.Markup("[green]Order status updated![/]");
+                        }
+                        else
+                            AnsiConsole.Markup("[red]Order not found.[/]");
+                    };
+                }
+
+                if (rbacSystem.HasPermission(user, Permission.CheckMyOrders))
+                {
+                    table.AddRow(orderOptionNumber.ToString(), "Check My Orders");
+                    orderActions[orderOptionNumber++] = () => orderManager.DisplayOrdersByUserId(user.Username);
+                }
+
+                if (rbacSystem.HasPermission(user, Permission.PayForOrder))
+                {
+                    table.AddRow(orderOptionNumber.ToString(), "Pay for Order");
+                    orderActions[orderOptionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        orderManager.DisplayOrdersByUserIdAndStatus(user.Username, Order.OrderStatus.Served);
+                        int orderId = AnsiConsole.Ask<int>("Enter Order ID to pay: ");
+                        var order = orderManager.GetOrderById(orderId);
+                        if (order != null)
+                        {
+                            order.MarkAsPaid();
+                            AnsiConsole.Markup("[green]Order paid![/]");
+                        }
+                        else
+                            AnsiConsole.Markup("[red]Order not found or already paid.[/]");
+                    };
+                }
+                table.AddRow(orderOptionNumber.ToString(), "Back to main menu");
+                orderActions[orderOptionNumber++] = () =>
+                {
+                    manageOrders = false;
+                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                };
+
+                AnsiConsole.Render(table);
+
+                int choice = AnsiConsole.Ask<int>("\nChoose an option: ");
+                if (orderActions.ContainsKey(choice))
+                {
+                    orderActions[choice]();
+                }
+                else
+                {
+                    AnsiConsole.Markup("[red]Invalid choice. Try again.[/]");
+                }
+
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+            }
+        }
+
+
+        static void OptionMenu(Menu m1, User user, RBAC rbacSystem)
         {
             bool manageMenu = true;
+
             while (manageMenu)
             {
                 Console.Clear();
-                Console.WriteLine("=== Manage Menu ===");
-                Console.WriteLine("1. Add a dish");
-                Console.WriteLine("2. Remove a dish");
-                Console.WriteLine("3. Modify a dish price");
-                Console.WriteLine("4. Back to main menu");
 
-                int choice = int.Parse(Console.ReadLine());
+                // Nagłówek menu
+                AnsiConsole.MarkupLine("[bold]🍽️ Manage Menu 🍽️[/]");
 
-                switch (choice)
+                Dictionary<int, Action> menuActions = new Dictionary<int, Action>();
+                int optionNumber = 1;
+
+                var table = new Table();
+                table.Border = TableBorder.Rounded;
+                table.AddColumn("[yellow]Option[/]");
+                table.AddColumn("[yellow]Description[/]");
+                if (rbacSystem.HasPermission(user, Permission.ViewMenu))
                 {
-                    case 1:
-                        // Add dish
-                        Console.Write("Enter dish name: ");
+                    Console.Clear();
+                    table.AddRow(optionNumber.ToString(), "View a full menu");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        m1.DisplayMenu();
+                    };
+                }
+
+                if (rbacSystem.HasPermission(user, Permission.ManageMenu))
+                {
+                    table.AddRow(optionNumber.ToString(), "Add a dish");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        AnsiConsole.MarkupLine("[bold green]Enter dish name: [/]");
+
                         string name = Console.ReadLine();
 
-                        // Check if the dish already exists
                         if (m1.Dishes.Any(d => d.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                         {
-                            Console.WriteLine("Dish with this name already exists. Please choose another name.");
-                            break;
+                            AnsiConsole.MarkupLine("[red]⚠️ Dish with this name already exists.[/]");
+                            return;
                         }
+                        Console.Clear();
 
-                        Console.Write("Enter dish price: ");
-                        float price = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat);
-                        Console.WriteLine("Choose a category (0: Appetizer, 1: Main, 2: Dessert, 3: Beverage): ");
+                        AnsiConsole.MarkupLine("[bold green]Enter dish price: [/]");
+
+                        float price = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        Console.Clear();
+
+                        var table2 = new Table();
+                        table2.Border = TableBorder.Rounded;
+                        table2.AddColumn("[cyan]Option[/]");
+                        table2.AddColumn("[green]Category[/]");
+
+                        table2.AddRow("0", "🥗 Appetizer");
+                        table2.AddRow("1", "🍽️ Main");
+                        table2.AddRow("2", "🍰 Dessert");
+                        table2.AddRow("3", "🥤 Beverage");
+
+                        AnsiConsole.Render(table2);
+
                         int categoryChoice = int.Parse(Console.ReadLine());
-                        m1.AddDish(name, price, (Category)categoryChoice);
-                        break;
 
-                    case 2:
-                        // Remove dish
+                        m1.AddDish(name, price, (Category)categoryChoice);
+                        AnsiConsole.MarkupLine("[green]✅ Dish added successfully![/]");
+                    };
+                }
+
+                
+                if (rbacSystem.HasPermission(user, Permission.ManageMenu))
+                {
+                    table.AddRow(optionNumber.ToString(), "Remove a dish");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        Console.Clear();
                         m1.DisplayMenu();
                         Console.Write("Enter the name of the dish to remove: ");
                         string dishNameToRemove = Console.ReadLine();
+
                         if (!m1.Dishes.Any(d => d.Name.Equals(dishNameToRemove, StringComparison.OrdinalIgnoreCase)))
                         {
                             Console.WriteLine("Dish not found. Please ensure you entered the correct name.");
-
-                            do
-                            {
-                                Console.Write("Enter the name of the dish to remove: ");
-                                dishNameToRemove = Console.ReadLine();
-                                
-                            } while (!m1.Dishes.Any(d => d.Name.Equals(dishNameToRemove, StringComparison.OrdinalIgnoreCase)));
+                            return;
                         }
 
-                            m1.RemoveDish(dishNameToRemove);
-                        break;
+                        m1.RemoveDish(dishNameToRemove);
+                        AnsiConsole.MarkupLine("[green]✅ Dish removed successfully![/]");
+                    };
+                }
 
-                    case 3:
-                        // Modify price
+                if (rbacSystem.HasPermission(user, Permission.ManageMenu))
+                {
+                    table.AddRow(optionNumber.ToString(), "Modify a dish price");
+                    menuActions[optionNumber++] = () =>
+                    {
+                        Console.Clear();
+                        m1.DisplayMenu();
                         Console.Write("Enter the name of the dish to modify: ");
                         string dishNameToModify = Console.ReadLine();
 
-                        // Check if the dish exists
                         if (!m1.Dishes.Any(d => d.Name.Equals(dishNameToModify, StringComparison.OrdinalIgnoreCase)))
                         {
                             Console.WriteLine("Dish not found. Please ensure you entered the correct name.");
-                            break;
+                            return;
                         }
 
                         Console.Write("Enter the new price: ");
-                        float newPrice = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture.NumberFormat);
+                        float newPrice = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                         m1.ModifyPrice(dishNameToModify, newPrice);
-                        break;
-
-                    case 4:
-                        // Back to main menu
-                        manageMenu = false;
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid option. Please try again.");
-                        break;
+                        AnsiConsole.MarkupLine("[green]✅ Price updated successfully![/]");
+                    };
                 }
+
+                
+                table.AddRow(optionNumber.ToString(), "Back to main menu");
+                menuActions[optionNumber++] = () =>
+                {
+                    manageMenu = false;
+                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                };
+
+                AnsiConsole.Render(table);
+
+                int choice = int.Parse(Console.ReadLine());
+
+                if (menuActions.ContainsKey(choice))
+                {
+                    menuActions[choice]();
+                }
+                else
+                {
+                    AnsiConsole.MarkupLine("[red]Invalid choice. Try again.[/]");
+                }
+
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
             }
         }
     }
-}
+
+    }
+

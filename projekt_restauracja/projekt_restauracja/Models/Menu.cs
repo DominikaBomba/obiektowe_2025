@@ -107,20 +107,59 @@ namespace projekt_restauracja.Models
                 Console.WriteLine("Nie znaleziono dania do modyfikacji.");
             }
         }
-     
+
         public void DisplayMenu()
         {
+            var table = new Table();
+            table.Border = TableBorder.Rounded;
+            table.AddColumn("[cyan]Category[/]");
+            table.AddColumn("[green]Dish[/]");
+            table.AddColumn("[yellow]Price (PLN)[/]");
+
+            int index_category = 1;
+            int index_dish = 1;
             foreach (var category in Categories)
             {
-                Console.WriteLine($"{category}: ");
+                // Dodanie kategorii z emoji
+                string categoryEmoji = string.Empty;
+                switch (category)
+                {
+                    case Category.Appetizer:
+                        categoryEmoji = "🥗";
+                        break;
+                    case Category.Main:
+                        categoryEmoji = "🍽️";
+                        break;
+                    case Category.Dessert:
+                        categoryEmoji = "🍰";
+                        break;
+                    case Category.Beverage:
+                        categoryEmoji = "🥤";
+                        break;
+                    default:
+                        categoryEmoji = "🍴";
+                        break;
+                }
+
+                // Dodanie kategorii do tabeli
+                table.AddRow($"[bold]{index_category}. {categoryEmoji} {category}[/]", "", "");
+
                 foreach (var dish in Dishes)
                 {
                     if (dish.Category == category)
                     {
-                        Console.WriteLine($"\t{dish}");
+                        // Dodanie dania z ceną
+                        table.AddRow("", $"{dish.Name}", $"{dish.Price:C}");
+                        index_dish++;
                     }
                 }
+                index_category++;
             }
+
+            AnsiConsole.Render(table);
         }
+
+
+
     }
 }

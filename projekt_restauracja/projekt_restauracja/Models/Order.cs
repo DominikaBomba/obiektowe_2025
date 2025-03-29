@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 namespace projekt_restauracja.Models
 {
-    internal class Order
+
+    public class Order
     {
         public enum OrderStatus { Placed, Cooked, Served, Paid }
+        public float fullPrice { get; private set; }
 
         private static int nextOrderId = 1; // Counter for orders
 
@@ -27,8 +29,24 @@ namespace projekt_restauracja.Models
             UserId = userId;
         }
 
-        public void AddDish(Dish dish) => dishes.Add(dish);
-        public void RemoveDish(Dish dish) => dishes.Remove(dish);
+        public void AddDish(Dish dish)
+        {
+            if (status == OrderStatus.Placed)
+            {
+                dishes.Add(dish);
+
+                fullPrice += dish.Price;
+            }
+
+        }
+        public void RemoveDish(Dish dish)
+        {
+            if (status == OrderStatus.Placed)
+            {
+                dishes.Remove(dish);
+                fullPrice -= dish.Price;
+            }
+        }
 
         public void MarkAsCooked()
         {
@@ -71,23 +89,26 @@ namespace projekt_restauracja.Models
 
         public void DisplayOrder()
         {
+
             var table = new Table();
-            Console.WriteLine($"Status: {status}");
-
             table.Border = TableBorder.Rounded;
-            table.AddColumn("[bold]Dish[/]");
-            table.AddColumn("[bold]Price (PLN)[/]");
 
-            float totalPrice = 0;
+            table.AddColumn(new TableColumn("[bold]Dish[/]"));
+            table.AddColumn(new TableColumn("[bold]Price (PLN)[/]"));
+
             foreach (var dish in dishes)
             {
                 table.AddRow(dish.Name, $"{dish.Price:F2}");
-                totalPrice += dish.Price;
             }
+
             table.AddRow(new Markup("[grey]────────────[/]"), new Markup("[grey]────────────[/]"));
 
-            table.AddRow(new Markup("[bold]Total price:[/]"), new Markup($"[green]{totalPrice:F2} PLN[/]"));
+            table.AddRow(new Markup("[bold]Total price:[/]"), new Markup($"[green]{fullPrice:F2} PLN[/]"));
             table.AddRow(new Markup("[bold]Status:[/]"), new Markup($"[blue]{status}[/]"));
+            table.AddRow(new Markup("[grey]────────────[/]"), new Markup("[grey]────────────[/]"));
+
+            table.AddRow(new Markup($"[bold yellow]Order ID: [/]"), new Markup($"[bold yellow] {OrderId}[/]"));
+
 
             AnsiConsole.Render(table);
         }

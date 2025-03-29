@@ -2,10 +2,6 @@
 a,Admin
 waiter,Waiter
 chef,Chef
-customer,Customer
-customer2,Customer
 a,Admin
-waiter,Waiter
-chef,Chef
 customer,Customer
 customer2,Customer

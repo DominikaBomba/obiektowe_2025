@@ -10,6 +10,8 @@ namespace projekt_restauracja.Models
     {
         private List<Order> orders;
 
+        private float revenue;
+
         public OrderManager()
         {
             orders = new List<Order>();
@@ -18,8 +20,24 @@ namespace projekt_restauracja.Models
         public void AddOrder(Order order)
         {
             orders.Add(order);
+
+            revenue = 0;
+            foreach (var item in orders)
+            {
+                revenue += item.fullPrice;
+            }
+
         }
 
+        public List<Order> GetOrders()
+        {
+            return orders;
+        }
+
+        public Order GetOrderById(int orderId)
+        {
+            return orders.FirstOrDefault(o => o.OrderId == orderId);
+        }
         // Displaying orders for specific users (a customer can display all of their orders(with status))
         public void DisplayOrdersByUserId(string userId)
         {
@@ -87,8 +105,11 @@ namespace projekt_restauracja.Models
                 Console.WriteLine("No orders.");
                 return;
             }
+            Console.Clear();
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Console.WriteLine("All orders:");
+            Console.WriteLine("🍽️ All Orders 🍽️");
+
             foreach (var order in orders)
             {
                 order.DisplayOrder();  
