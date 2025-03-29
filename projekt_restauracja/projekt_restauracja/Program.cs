@@ -40,150 +40,158 @@ namespace projekt_restauracja
             PasswordManager.AddUser("customer3", "a", UserRole.Customer);
 
             bool exitProgram = false;
-            bool loggedIn = true;
 
             while (!exitProgram)
             {
                 Console.Clear();
-
-
                 Console.WriteLine("=== RESTAURANT ===");
 
-                Console.Write("Enter username: ");
-                string username = Console.ReadLine();
+                // Main menu options
+                var mainMenu = new SelectionPrompt<string>()
+                    .Title("[green]Please select an option:[/]")
+                    .AddChoices("Sign Up", "Log In", "Exit");
 
-                Console.Write("Enter password: ");
-                string password = Console.ReadLine();
+                string selectedOption = AnsiConsole.Prompt(mainMenu);
 
-                if (!PasswordManager.VerifyPassword(username, password))
+                switch (selectedOption)
                 {
-                    Console.WriteLine("Incorrect username or password");
-                    Console.ReadKey();
-                    continue;
-                }
+                    case "Sign Up":
+                        // Sign Up
+                        SignUp();
+                        break;
 
-                loggedIn = true;
-                var user = new User(username, PasswordManager.GetUserRoles(username));
+                    case "Log In":
+                        // Log In
+                        LogIn();
+                        break;
 
+                    case "Exit":
+                        exitProgram = true;
+                        Console.WriteLine("Exiting the program...");
+                        Environment.Exit(0); // Exit the program
+                        break;
 
-
-
-                var order1 = new Order("customer1");
-                order1.AddDish(new Dish("Pizza", 25.99f, Category.Main));
-                order1.AddDish(new Dish("Coke", 5.50f, Category.Beverage));
-                order1.AddDish(new Dish("Pasta", 30.00f, Category.Main));
-
-
-
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
-                Console.WriteLine("\uD83C\uDF74");
-                var rbacSystem = new RBAC();
-                Console.ReadKey();
-                while (loggedIn)
-                {
-                    List<string> menuOptions = new List<string>();
-                    Dictionary<int, Action> menuActions = new Dictionary<int, Action>();
-
-                    int optionNumber = 1;
-
-
-                    //menu - can be seen by clients and admin
-                    if (rbacSystem.HasPermission(user, Permission.ManageMenu) || rbacSystem.HasPermission(user, Permission.ViewMenu))
-                    {
-                        menuOptions.Add("Menu");
-                        menuActions[optionNumber++] = () => OptionMenu(m1, user, rbacSystem);
-                    }
-                    //orders - can be seen by admin, client, waiter, chef
-                    if (rbacSystem.HasPermission(user, Permission.DisplayOrders) || //admin
-                        rbacSystem.HasPermission(user, Permission.ChangeOrderStatus) || //chef and waiter
-                        rbacSystem.HasPermission(user, Permission.PlaceAnOrder)  //client
-                        )
-                    {
-                        menuOptions.Add("Orders");
-                        menuActions[optionNumber++] = () => OrderOption(user, rbacSystem, orderManager);
-                    }
-
-                    //employees - can only be seen by admin
-                    if (rbacSystem.HasPermission(user, Permission.ManageEmployees))
-                    {
-                        menuOptions.Add("Employees");
-                        menuActions[optionNumber++] = () => Console.WriteLine("employees");
-                    }
-
-                    //manage clients
-                    if (rbacSystem.HasPermission(user, Permission.ManageClients))
-                    {
-                        menuOptions.Add("Clients");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Clients");
-                    }
-
-                    //revenues
-                    if (rbacSystem.HasPermission(user, Permission.ViewRevenue))
-                    {
-                        menuOptions.Add("Revenues");
-                        menuActions[optionNumber++] = () => Console.WriteLine("revenue viewed...");
-                    }
-
-                    //logs
-                    if (rbacSystem.HasPermission(user, Permission.ViewLogs))
-                    {
-                        menuOptions.Add("Logs");
-                        menuActions[optionNumber++] = () => Console.WriteLine("Logs viewed...");
-                    }
-
-
-                    // Always available options
-                    menuOptions.Add("Log out");
-                    menuActions[optionNumber++] = () =>
-                    {
-                        Console.WriteLine("Logged out");
-                        loggedIn = false;
-                    };
-
-                    menuOptions.Add("Exit the program");
-                    menuActions[optionNumber++] = () =>
-                    {
-                        Console.WriteLine("Closing the program");
-                        Environment.Exit(0);
-                    };
-
-                    // Display menu options
-                    // Wyświetlanie opcji menu w tabelce
-                    Console.Clear();
-                    Console.WriteLine($"Logged in as: {username}");
-                    Console.WriteLine("\nChoose an option:");
-                    Console.OutputEncoding = System.Text.Encoding.UTF8;
-                    // Tworzymy tabelę
-                    var table = new Table();
-                    table.AddColumn("Option");
-                    table.AddColumn("Description");
-
-                    // Dodajemy wiersze do tabeli
-                    int i = 1;
-                    foreach (var menuOption in menuOptions)
-                    {
-                        table.AddRow(i.ToString(), menuOption);  // Numer opcji i jej opis
-                        i++;
-                    }
-
-                    // Renderujemy tabelę
-                    AnsiConsole.Render(table);
-
-                    // Pobieramy wybór użytkownika
-                    int choice;
-                    if (!int.TryParse(Console.ReadLine(), out choice) || !menuActions.ContainsKey(choice))
-                    {
+                    default:
                         Console.WriteLine("Invalid choice. Please try again.");
-                    }
-                    else
-                    {
-                        // Wykonujemy wybraną akcję
-                        menuActions[choice]();
-                    }
+                        break;
+                }
+            }
 
-                    Console.ReadKey();
+        }
+        private static void SignUp()
+        {
+            Console.Clear();
+            Console.WriteLine("=== SIGN UP ===");
+
+            string username = AnsiConsole.Ask<string>("Enter username: ");
+            string password = AnsiConsole.Ask<string>("Enter password: ");
+
+            // Add the user with a default role of "Customer"
+            PasswordManager.AddUser(username, password, UserRole.Customer);
+            Console.WriteLine($"User {username} created successfully with the Customer role.");
+            Console.ReadKey();
+        }
+
+        private static void LogIn()
+        {
+            Console.Clear();
+            Console.WriteLine("=== LOG IN ===");
+
+            string username = AnsiConsole.Ask<string>("Enter username: ");
+            string password = AnsiConsole.Ask<string>("Enter password: ");
+
+            // Verify if the credentials are correct
+            if (!PasswordManager.VerifyPassword(username, password))
+            {
+                Console.WriteLine("Incorrect username or password. Please try again.");
+                Console.ReadKey();
+                return; // Go back to main menu after failed login
+            }
+
+            // Create user object and set role
+            
+            var user = new User(username, PasswordManager.GetUserRoles(username));
+            
+            Console.ReadKey();
+
+            // After logging in, you can show the user-specific menu
+            ShowUserMenu(user);
+        }
+
+        private static void ShowUserMenu(User user)
+        {
+            bool loggedIn = true;
+            var orderManager = new OrderManager();
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+            string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
+            Menu m1 = new Menu(filePath);
+
+            while (loggedIn)
+            {
+                var rbacSystem = new RBAC();
+                var menuOptions = new List<string>();
+                var menuActions = new Dictionary<int, Action>();
+                Console.Clear();
+                Console.WriteLine($"You're logged in as {user.Username}!");
+
+                int optionNumber = 1;
+
+                // Add options based on user roles
+                if (rbacSystem.HasPermission(user, Permission.ManageMenu) || rbacSystem.HasPermission(user, Permission.ViewMenu))
+                {
+                    menuOptions.Add("Menu");
+                    menuActions[optionNumber++] = () => OptionMenu(m1, user, rbacSystem);
+                }
+                if (rbacSystem.HasPermission(user, Permission.DisplayOrders) || rbacSystem.HasPermission(user, Permission.PlaceAnOrder))
+                {
+                    menuOptions.Add("Orders");
+                    menuActions[optionNumber++] = () => OrderOption(user, rbacSystem, orderManager);
+                }
+                if (rbacSystem.HasPermission(user, Permission.ManageEmployees))
+                {
+                    menuOptions.Add("Employees");
+                    menuActions[optionNumber++] = () => EmployeeOption(user, rbacSystem);
+                }
+                if (rbacSystem.HasPermission(user, Permission.ManageClients))
+                {
+                    menuOptions.Add("Clients");
+                    menuActions[optionNumber++] = () => CustomerOption(user, rbacSystem);
                 }
 
+                if (rbacSystem.HasPermission(user, Permission.ViewRevenue))
+                {
+                    menuOptions.Add("Revenues");
+                    menuActions[optionNumber++] = () => Console.WriteLine("revenue viewed...");
+                }
+
+                // Always available options
+                menuOptions.Add("Log out");
+                menuActions[optionNumber++] = () => {
+                    Console.WriteLine("Logged out");
+                    loggedIn = false;
+                };
+
+                menuOptions.Add("Exit the program");
+                menuActions[optionNumber++] = () => {
+                    Console.WriteLine("Closing the program");
+                    Environment.Exit(0);
+                };
+
+                // Show user menu options using AnsiConsole SelectionPrompt
+                var selectionPrompt = new SelectionPrompt<string>()
+                    .Title("[green]Select an option:[/]")
+                    .AddChoices(menuOptions);
+
+                string selectedOption = AnsiConsole.Prompt(selectionPrompt);
+
+                // Execute corresponding action
+                if (menuOptions.Contains(selectedOption))
+                {
+                    menuActions[menuOptions.IndexOf(selectedOption) + 1](); // Menu options start from 1
+                }
+
+                Console.ReadKey();
             }
         }
 
@@ -226,10 +234,22 @@ namespace projekt_restauracja
 
                         Menu m = new Menu(filePath);
                         m.DisplayMenu();
+
                         Order newOrder = new Order(user.Username);
-                        newOrder.AddDish(new Dish("makaron", 12, Category.Dessert));
+
+                        Console.Write("Enter the name of the dish you want to order: ");
+                        string selectedDishName = Console.ReadLine();
+
+                        if (!m.Dishes.Any(d => d.Name.Equals(selectedDishName, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            Console.WriteLine("Dish not found. Please ensure you entered the correct name.");
+                            return;
+                        }
+
+                        newOrder.AddDish(m.GetDish(selectedDishName));
                         orderManager.AddOrder(newOrder);
-                        AnsiConsole.Markup("[yellow](ZAWSZE DODAJE SIE MAKARON- DO ZMIANY)[/]");
+                        AnsiConsole.MarkupLine("[green]✅ New order placed![/]");
+                        //AnsiConsole.Markup("[yellow](ZAWSZE DODAJE SIE MAKARON- DO ZMIANY)[/]");
                     };
                 }
                 if (rbacSystem.HasPermission(user, Permission.CheckOrderStatus))
@@ -243,6 +263,8 @@ namespace projekt_restauracja
                             orderManager.DisplayOrdersByStatus(Order.OrderStatus.Placed);
                         if (user.Roles.Contains(UserRole.Waiter))
                             orderManager.DisplayOrdersByStatus(Order.OrderStatus.Cooked);
+                        if(user.Roles.Contains(UserRole.Admin))
+                            orderManager.DisplayAllOrders();
                     };
                 }
 
@@ -353,7 +375,7 @@ namespace projekt_restauracja
                     menuActions[optionNumber++] = () =>
                     {
                         Console.Clear();
-                        AnsiConsole.MarkupLine("[bold green]Enter dish name: [/]");
+                        AnsiConsole.Markup("[bold green]Enter dish name: [/]");
 
                         string name = Console.ReadLine();
 
@@ -364,9 +386,9 @@ namespace projekt_restauracja
                         }
                         Console.Clear();
 
-                        AnsiConsole.MarkupLine("[bold green]Enter dish price: [/]");
+                        //AnsiConsole.MarkupLine("[bold green]Enter dish price: [/]");
 
-                        float price = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        float price = GetValidFloat("Enter dish price: ");
                         Console.Clear();
 
                         var table2 = new Table();
@@ -381,7 +403,14 @@ namespace projekt_restauracja
 
                         AnsiConsole.Render(table2);
 
-                        int categoryChoice = int.Parse(Console.ReadLine());
+                        int categoryChoice;
+                        AnsiConsole.Markup("[green]Select a category (0-3): [/]");
+
+                        while (!int.TryParse(Console.ReadLine(), out categoryChoice) || categoryChoice < 0 || categoryChoice > 3)
+                        {
+                            AnsiConsole.MarkupLine("[red]Invalid input. Please enter a number between 0 and 3.[/]");
+                            AnsiConsole.Markup("[green]Select a category (0-3): [/]");
+                        }
 
                         m1.AddDish(name, price, (Category)categoryChoice);
                         AnsiConsole.MarkupLine("[green]✅ Dish added successfully![/]");
@@ -396,7 +425,8 @@ namespace projekt_restauracja
                     {
                         Console.Clear();
                         m1.DisplayMenu();
-                        Console.Write("Enter the name of the dish to remove: ");
+                        AnsiConsole.Markup("[bold green]Enter the name of the dish to remove: [/]");
+                        //Console.Write("Enter the name of the dish to remove: ");
                         string dishNameToRemove = Console.ReadLine();
 
                         if (!m1.Dishes.Any(d => d.Name.Equals(dishNameToRemove, StringComparison.OrdinalIgnoreCase)))
@@ -426,8 +456,8 @@ namespace projekt_restauracja
                             return;
                         }
 
-                        Console.Write("Enter the new price: ");
-                        float newPrice = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        //Console.Write("Enter the new price: ");
+                        float newPrice = GetValidFloat("Enter the new price: ");
                         m1.ModifyPrice(dishNameToModify, newPrice);
                         AnsiConsole.MarkupLine("[green]✅ Price updated successfully![/]");
                     };
@@ -443,7 +473,7 @@ namespace projekt_restauracja
 
                 AnsiConsole.Render(table);
 
-                int choice = int.Parse(Console.ReadLine());
+                int choice = AnsiConsole.Ask<int>("\nChoose an option: ");
 
                 if (menuActions.ContainsKey(choice))
                 {
@@ -457,6 +487,229 @@ namespace projekt_restauracja
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
             }
+        }
+
+        static void EmployeeOption(User user, RBAC rbacSystem)
+        {
+            bool manageEmployees = true;
+
+            while (manageEmployees)
+            {
+                Console.Clear();
+                AnsiConsole.MarkupLine("[bold]👥 Employee Management 👥[/]");
+
+                Dictionary<int, Action> employeeActions = new Dictionary<int, Action>();
+                int optionNumber = 1;
+
+                var table = new Table();
+                table.Border = TableBorder.Rounded;
+                table.AddColumn("[yellow]Option[/]");
+                table.AddColumn("[yellow]Description[/]");
+
+                // Display Employees
+                table.AddRow(optionNumber.ToString(), "Display all employees");
+                employeeActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayAllEmployees();
+                };
+                // Add Employee
+                table.AddRow(optionNumber.ToString(), "Add a new employee");
+                employeeActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    string newUsername = AnsiConsole.Ask<string>("Enter new employee username: ");
+                    string newPassword = AnsiConsole.Ask<string>("Enter new employee password: ");
+                    UserRole newRole = AnsiConsole.Prompt(
+                        new SelectionPrompt<UserRole>()
+                            .Title("Select a role for the new employee:")
+                            .AddChoices(UserRole.Chef, UserRole.Waiter)
+                    );
+
+                    PasswordManager.AddUser(newUsername, newPassword, newRole);
+                    AnsiConsole.MarkupLine($"[green]✅ Employee {newUsername} added successfully as {newRole}![/]");
+                };
+
+                // Fire Employee
+                table.AddRow(optionNumber.ToString(), "Fire an employee");
+                employeeActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayAllEmployees();
+                    string usernameToRemove = AnsiConsole.Ask<string>("Enter the username of the employee to fire: ");
+
+                    List<string> lines = File.ReadAllLines(PasswordManager.GetRoleFilePath()).ToList();
+                    if (lines.RemoveAll(line => line.StartsWith(usernameToRemove + ",")) > 0)
+                    {
+                        File.WriteAllLines(PasswordManager.GetRoleFilePath(), lines);
+                        AnsiConsole.MarkupLine($"[red]❌ Employee {usernameToRemove} has been removed.[/]");
+                    }
+                    else
+                    {
+                        AnsiConsole.MarkupLine($"[red]Employee {usernameToRemove} not found.[/]");
+                    }
+                };
+
+                // Add Role to Employee
+                table.AddRow(optionNumber.ToString(), "Add a role to an employee");
+                employeeActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayAllEmployees();
+                    string username = AnsiConsole.Ask<string>("Enter the username to add a role to: ");
+                    UserRole newRole = AnsiConsole.Prompt(
+                        new SelectionPrompt<UserRole>()
+                            .Title("Select a role to add:")
+                            .AddChoices(Enum.GetValues(typeof(UserRole)).Cast<UserRole>())
+                    );
+
+                    PasswordManager.AddUserRole(username, newRole);
+                    AnsiConsole.MarkupLine($"[green]✅ Role {newRole} added to {username}![/]");
+                };
+
+                // Remove Role from Employee
+                table.AddRow(optionNumber.ToString(), "Remove a role from an employee");
+                employeeActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayAllEmployees();
+                    string username = AnsiConsole.Ask<string>("Enter the username to remove a role from: ");
+                    List<UserRole> roles = PasswordManager.GetUserRoles(username);
+
+                    if (roles.Count == 0)
+                    {
+                        AnsiConsole.MarkupLine("[red]User has no roles to remove![/]");
+                        return;
+                    }
+
+                    UserRole roleToRemove = AnsiConsole.Prompt(
+                        new SelectionPrompt<UserRole>()
+                            .Title("Select a role to remove:")
+                            .AddChoices(roles)
+                    );
+
+                    PasswordManager.RemoveUserRole(username, roleToRemove);
+                    AnsiConsole.MarkupLine($"[yellow]⚠️ Role {roleToRemove} removed from {username}.[/]");
+                };
+
+                // Exit to Main Menu
+                table.AddRow(optionNumber.ToString(), "Back to main menu");
+                employeeActions[optionNumber++] = () =>
+                {
+                    manageEmployees = false;
+                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                };
+
+                AnsiConsole.Render(table);
+
+                int choice = AnsiConsole.Ask<int>("\nChoose an option: ");
+                if (employeeActions.ContainsKey(choice))
+                {
+                    employeeActions[choice]();
+                }
+                else
+                {
+                    AnsiConsole.Markup("[red]Invalid choice. Try again.[/]");
+                }
+
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+            }
+        }
+
+        static void CustomerOption(User user, RBAC rbacSystem)
+        {
+            bool manageCustomers = true;
+
+            while (manageCustomers)
+            {
+                Console.Clear();
+                AnsiConsole.MarkupLine("[bold]👥 Customer Management 👥[/]");
+
+                Dictionary<int, Action> customerActions = new Dictionary<int, Action>();
+                int optionNumber = 1;
+
+                var table = new Table();
+                table.Border = TableBorder.Rounded;
+                table.AddColumn("[yellow]Option[/]");
+                table.AddColumn("[yellow]Description[/]");
+
+                // Display Customers
+                table.AddRow(optionNumber.ToString(), "Display all customers");
+                customerActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayCustomers();
+                };
+
+                // Add Customer
+                table.AddRow(optionNumber.ToString(), "Add a customer");
+                customerActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    string username = AnsiConsole.Ask<string>("Enter new customer's username: ");
+                    string password = AnsiConsole.Ask<string>("Enter new customer's password: ");
+
+                    // Use AddUser method with UserRole.Customer
+                    PasswordManager.AddUser(username, password, UserRole.Customer);
+                };
+
+                // Remove Customer
+                table.AddRow(optionNumber.ToString(), "Remove a customer");
+                customerActions[optionNumber++] = () =>
+                {
+                    Console.Clear();
+                    PasswordManager.DisplayCustomers();
+                    string usernameToRemove = AnsiConsole.Ask<string>("Enter the username of the customer to remove: ");
+
+                    List<string> lines = File.ReadAllLines(PasswordManager.GetRoleFilePath()).ToList();
+                    if (lines.RemoveAll(line => line.StartsWith(usernameToRemove + ",")) > 0)
+                    {
+                        File.WriteAllLines(PasswordManager.GetRoleFilePath(), lines);
+                        AnsiConsole.MarkupLine($"[red]❌ Customer {usernameToRemove} has been removed.[/]");
+                    }
+                    else
+                    {
+                        AnsiConsole.MarkupLine($"[red]Customer {usernameToRemove} not found.[/]");
+                    }
+                };
+
+                // Exit to Main Menu
+                table.AddRow(optionNumber.ToString(), "Back to main menu");
+                customerActions[optionNumber++] = () =>
+                {
+                    manageCustomers = false;
+                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                };
+
+                AnsiConsole.Render(table);
+
+                int choice = AnsiConsole.Ask<int>("\nChoose an option: ");
+                if (customerActions.ContainsKey(choice))
+                {
+                    customerActions[choice]();
+                }
+                else
+                {
+                    AnsiConsole.MarkupLine("[red]Invalid choice. Try again.[/]");
+                }
+
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+            }
+        }
+        static float GetValidFloat(string message)
+        {
+            float value;
+            AnsiConsole.Markup($"[bold green]{message} [/]");
+
+            while (!float.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out value) || value < 0)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid positive number.");
+                AnsiConsole.Markup($"[bold green]{message} [/]");
+            }
+
+            return value;
         }
     }
 

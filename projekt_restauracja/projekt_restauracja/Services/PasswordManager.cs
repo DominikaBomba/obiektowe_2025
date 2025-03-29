@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Spectre.Console;
 
 namespace projekt_restauracja.Services
 {
@@ -21,6 +22,10 @@ namespace projekt_restauracja.Services
 
             public static event Action<string, bool> PasswordVerified;
 
+        public static string GetRoleFilePath()
+        {
+            return _rolesFilePath;
+        }
 
         static PasswordManager()
         {
@@ -183,6 +188,94 @@ namespace projekt_restauracja.Services
                     return;
                 }
             }
+        }
+
+        public static void DisplayAllEmployees()
+        {
+            if (!File.Exists(_rolesFilePath))
+            {
+                AnsiConsole.MarkupLine("[red]No employees found![/]");
+                return;
+            }
+
+            var lines = File.ReadAllLines(_rolesFilePath);
+            bool hasEmployees = false;
+
+            var table = new Table();
+            table.Border = TableBorder.Rounded;
+            table.AddColumn("[cyan]Username[/]");
+            table.AddColumn("[green]Roles[/]");
+
+            foreach (var line in lines)
+            {
+                var parts = line.Split(',');
+                if (parts.Length < 2) continue;  // Skip invalid lines
+
+                string username = parts[0];
+                List<UserRole> roles = parts.Skip(1)
+                                            .Where(role => Enum.TryParse(role, out UserRole _))
+                                            .Select(role => (UserRole)Enum.Parse(typeof(UserRole), role))
+                                            .ToList();
+
+                // Only display users with Chef or Waiter role
+                if (roles.Contains(UserRole.Chef) || roles.Contains(UserRole.Waiter))
+                {
+                    hasEmployees = true;
+                    table.AddRow($"[yellow]{username}[/]", $"[green]{string.Join(", ", roles)}[/]");
+                }
+            }
+
+            if (!hasEmployees)
+            {
+                AnsiConsole.MarkupLine("[red]No employees found![/]");
+                return;
+            }
+
+            AnsiConsole.Render(table);
+        }
+
+        public static void DisplayCustomers()
+        {
+            if (!File.Exists(GetRoleFilePath()))
+            {
+                AnsiConsole.MarkupLine("[red]No customers found![/]");
+                return;
+            }
+
+            var lines = File.ReadAllLines(GetRoleFilePath());
+            bool hasCustomers = false;
+
+            var table = new Table();
+            table.Border = TableBorder.Rounded;
+            table.AddColumn("[cyan]Username[/]");
+            table.AddColumn("[green]Roles[/]");
+
+            foreach (var line in lines)
+            {
+                var parts = line.Split(',');
+                if (parts.Length < 2) continue;  // Skip invalid lines
+
+                string username = parts[0];
+                List<UserRole> roles = parts.Skip(1)
+                                             .Where(role => Enum.TryParse(role, out UserRole _))
+                                             .Select(role => (UserRole)Enum.Parse(typeof(UserRole), role))
+                                             .ToList();
+
+                // Only display users with Customer role
+                if (roles.Contains(UserRole.Customer))
+                {
+                    hasCustomers = true;
+                    table.AddRow($"[yellow]{username}[/]", $"[green]{string.Join(", ", roles)}[/]");
+                }
+            }
+
+            if (!hasCustomers)
+            {
+                AnsiConsole.MarkupLine("[red]No customers found![/]");
+                return;
+            }
+
+            AnsiConsole.Render(table);
         }
     }
 }

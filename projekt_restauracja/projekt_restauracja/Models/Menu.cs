@@ -64,6 +64,15 @@ namespace projekt_restauracja.Models
             var lines = Dishes.Select(d => $"{d.Price.ToString(CultureInfo.InvariantCulture)},{d.Category},{d.Name}").ToArray();
             File.WriteAllLines(filePath, lines);
         }
+        public Dish GetDish(string name)
+        {
+            var selectedDish = Dishes.FirstOrDefault(d => d.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (selectedDish == null)
+            {
+                Console.WriteLine("Nie znaleziono dania.");
+            }
+            return selectedDish;
+        }
 
         public void AddDish(string name, float price, Category category)
         {

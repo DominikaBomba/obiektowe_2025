@@ -55,3 +55,14 @@ C:\Users\Dominika Bomba\Desktop\obiektowe_2025-main\projekt_restauracja\projekt_
 C:\Users\Dominika Bomba\Desktop\obiektowe_2025-main\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_.AACA31CB.Up2Date
 C:\Users\Dominika Bomba\Desktop\obiektowe_2025-main\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.exe
 C:\Users\Dominika Bomba\Desktop\obiektowe_2025-main\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_restauracja.pdb
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\Spectre.Console.dll
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Buffers.dll
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Memory.dll
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\Spectre.Console.xml
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Buffers.xml
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Memory.xml
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\projekt_.AACA31CB.Up2Date
