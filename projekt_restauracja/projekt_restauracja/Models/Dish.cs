@@ -2,7 +2,7 @@
 
 namespace projekt_restauracja.Models
 {
-    public class Dish
+    internal class Dish
     {
         public string Name { get; set; }
         public float Price { get; set; }

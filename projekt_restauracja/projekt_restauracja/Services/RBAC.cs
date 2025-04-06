@@ -10,54 +10,15 @@ namespace projekt_restauracja.Services
 {
     public enum Permission
     {
-        //menu
         ManageMenu,
-        /* only admin -> allows to:
-            * (display menu,
-            * add dish,
-            * modify price)*/
         ViewMenu,
-        /* for client -> allows to:
-            * DisplayMenu */
-
-        //employees
-        ManageEmployees,
-        /* only for admin -> allows to:
-            * DisplayEmployees
-            * AddEmployee
-            * FireEmployee (delete)
-            * AddRole
-            * RemoveRole */
-
-        //clients
-        ManageClients,
-        /* only for admin -> allows to:
-            * AddClient
-            * RemoveClient */
-
-        
-        //orders
-        DisplayOrders, //only for admin (only admin can see all orders)
-
-        CheckOrderStatus, /* chef (sees orders with placed status),
-                     * waiter (sees orders with cooked status) */
-
-        CheckMyOrders, //only client - can see orders with his userid
-
-        ChangeOrderStatus, /* chef placed -> cooked
-                      * waiter cooked -> served
-                      */
-
-        PlaceAnOrder, //only Client  -> placed
-
-        PayForOrder, //only client served -> paid
-
-        //revenues
-        ViewRevenue, //only admin
-
-        //logs
-        ViewLogs //only admin
-
+        PlaceOrder,
+        ChangeOrderStatus,
+        ViewLogs,
+        ProcessPayments,
+        ViewOrders,
+        ServeOrder,
+        CheckOrderStatus
     }
     internal class RBAC
     {
@@ -71,44 +32,29 @@ namespace projekt_restauracja.Services
             {
                 { 
                 UserRole.Admin, new List<Permission> { 
-                    //Menu
                     Permission.ManageMenu, 
                     Permission.ViewMenu, 
-
-                    //employees
-                    Permission.ManageEmployees,
-
-                    //clients
-                    Permission.ManageClients,
-
-                    //orders
-                    Permission.DisplayOrders,
-                    Permission.ChangeOrderStatus,
-                    Permission.PlaceAnOrder,
-                    Permission.PayForOrder,
-                      Permission.CheckOrderStatus,
-
-                    //revenue
-                    Permission.ViewRevenue,
-                 
-                    //logs
+                    Permission.PlaceOrder,
+                    Permission.ChangeOrderStatus, 
                     Permission.ViewLogs, 
-                  }},
+                    Permission.ProcessPayments,
+                    Permission.ViewOrders,
+                    Permission.ServeOrder,
+                    Permission.CheckOrderStatus}},
                 { 
                 UserRole.Customer, new List<Permission> { 
                     Permission.ViewMenu, 
-                    Permission.PlaceAnOrder, 
-                    Permission.CheckMyOrders, 
-                    Permission.PayForOrder } 
-                },
+                    Permission.PlaceOrder, 
+                    Permission.CheckOrderStatus, 
+                    Permission.ProcessPayments } },
                 { 
                 UserRole.Chef, new List<Permission> { 
-                    Permission.CheckOrderStatus, 
+                    Permission.ViewOrders, 
                     Permission.ChangeOrderStatus } },
                 { 
-                UserRole.Waiter, new List<Permission> {
-                    Permission.CheckOrderStatus,
-                    Permission.ChangeOrderStatus } }
+                UserRole.Waiter, new List<Permission> { 
+                    Permission.ViewOrders, 
+                    Permission.ServeOrder } }
             };
         }
 
