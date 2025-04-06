@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Spectre.Console;
+using Spectre.Console.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace projekt_restauracja.Models
 {
@@ -32,6 +35,84 @@ namespace projekt_restauracja.Models
         public List<Order> GetOrders()
         {
             return orders;
+        }
+
+
+        public void DisplayOrderSummaryByStatus()
+        {
+            if (orders.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[red]No orders to display.[/]");
+                return;
+            }
+
+            var paidOrders = orders.Where(o => o.Status == Order.OrderStatus.Paid).ToList();
+            var unpaidOrders = orders.Where(o => o.Status != Order.OrderStatus.Paid).ToList();
+
+            AnsiConsole.MarkupLine("\n[bold underline green]✅ Paid Orders:[/]\n");
+            if (paidOrders.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[grey]There are no orders with the 'Paid' status.[/]");
+            }
+            else
+            {
+                var paidTable = new Table();
+                paidTable.Border = TableBorder.Rounded;
+                paidTable.AddColumn("[bold]Order ID[/]");
+                paidTable.AddColumn("[bold]Customer ID[/]");
+                paidTable.AddColumn("[bold]Price (PLN)[/]");
+
+                float paidTotal = 0;
+
+                foreach (var order in paidOrders)
+                {
+                    paidTable.AddRow(
+                        order.OrderId.ToString(),
+                        order.UserId,
+                        $"[green]{order.fullPrice:F2}[/]"
+                    );
+                    paidTotal += order.fullPrice;
+                }
+
+                paidTable.AddEmptyRow();
+                paidTable.AddRow(
+                    new IRenderable[]
+                    {
+                new Markup("[bold yellow]Total:[/]"),
+                new Markup(""),
+                new Markup($"[bold green]{paidTotal:F2} PLN[/]")
+                    }
+                );
+
+                AnsiConsole.Write(paidTable);
+            }
+
+            AnsiConsole.MarkupLine("\n[bold underline darkorange]🕒 Other Orders:[/]\n");
+            if (unpaidOrders.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[grey]No unpaid orders found.[/]");
+            }
+            else
+            {
+                var unpaidTable = new Table();
+                unpaidTable.Border = TableBorder.Rounded;
+                unpaidTable.AddColumn("[bold]Order ID[/]");
+                unpaidTable.AddColumn("[bold]Customer ID[/]");
+                unpaidTable.AddColumn("[bold]Price (PLN)[/]");
+                unpaidTable.AddColumn("[bold]Status[/]");
+
+                foreach (var order in unpaidOrders)
+                {
+                    unpaidTable.AddRow(
+                        order.OrderId.ToString(),
+                        order.UserId,
+                        $"[orange1]{order.fullPrice:F2}[/]",
+                        $"[blue]{order.Status}[/]"
+                    );
+                }
+
+                AnsiConsole.Write(unpaidTable);
+            }
         }
 
         public Order GetOrderById(int orderId)
