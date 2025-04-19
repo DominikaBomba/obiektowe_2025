@@ -60,13 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Dish.cs" />
-    <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LogManager.cs" />
     <Compile Include="Services\OrderManager.cs" />
     <Compile Include="Services\PasswordManager.cs" />
     <Compile Include="Services\RBAC.cs" />
@@ -81,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\dishes.txt" />
-    <Content Include="Data\log.txt" />
     <Content Include="Data\userPasswords.txt" />
     <Content Include="Data\userRoles.txt" />
   </ItemGroup>

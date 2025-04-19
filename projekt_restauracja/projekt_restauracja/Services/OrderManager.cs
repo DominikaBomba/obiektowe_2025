@@ -12,12 +12,15 @@ namespace projekt_restauracja.Models
     internal class OrderManager
     {
         private List<Order> orders;
+        private DateTime lastAdminLoginTime;
 
         private float revenue;
 
         public OrderManager()
         {
             orders = new List<Order>();
+            lastAdminLoginTime = DateTime.MinValue;
+
         }
 
         public void AddOrder(Order order)
@@ -35,11 +38,53 @@ namespace projekt_restauracja.Models
         public List<Order> GetOrders()
         {
             return orders;
+            
         }
-
+       
 
         public void DisplayOrderSummaryByStatus()
         {
+            AnsiConsole.MarkupLine("\n[bold underline]📊 Orders by Status:[/]\n");
+
+            var statusGroups = orders
+                .GroupBy(o => o.Status)
+                .Select(g => new { Status = g.Key, Count = g.Count() })
+                .OrderBy(g => g.Status.ToString());
+
+            var chart = new BarChart()
+                .Width(60)
+                .Label("[bold]Orders revenue[/]")
+                .CenterLabel();
+
+            foreach (var group in statusGroups)
+            {
+                Color color;
+
+                switch (group.Status)
+                {
+                    case Order.OrderStatus.Placed:
+                        color = Color.Yellow;
+                        break;
+                    case Order.OrderStatus.Cooked:
+                        color = Color.Orange1;
+                        break;
+                    case Order.OrderStatus.Served:
+                        color = Color.Blue;
+                        break;
+                    case Order.OrderStatus.Paid:
+                        color = Color.Green;
+                        break;
+                    default:
+                        color = Color.Grey;
+                        break;
+                }
+
+                chart.AddItem(group.Status.ToString(), group.Count, color);
+            }
+
+
+            AnsiConsole.Write(chart);
+
             if (orders.Count == 0)
             {
                 AnsiConsole.MarkupLine("[red]No orders to display.[/]");
@@ -49,7 +94,7 @@ namespace projekt_restauracja.Models
             var paidOrders = orders.Where(o => o.Status == Order.OrderStatus.Paid).ToList();
             var unpaidOrders = orders.Where(o => o.Status != Order.OrderStatus.Paid).ToList();
 
-            AnsiConsole.MarkupLine("\n[bold underline green]✅ Paid Orders:[/]\n");
+            AnsiConsole.MarkupLine("\n[bold underline]✅ Paid Orders:[/]\n");
             if (paidOrders.Count == 0)
             {
                 AnsiConsole.MarkupLine("[grey]There are no orders with the 'Paid' status.[/]");
@@ -78,7 +123,7 @@ namespace projekt_restauracja.Models
                 paidTable.AddRow(
                     new IRenderable[]
                     {
-                new Markup("[bold yellow]Total:[/]"),
+                new Markup("[bold Orange1]Total:[/]"),
                 new Markup(""),
                 new Markup($"[bold green]{paidTotal:F2} PLN[/]")
                     }
@@ -87,7 +132,7 @@ namespace projekt_restauracja.Models
                 AnsiConsole.Write(paidTable);
             }
 
-            AnsiConsole.MarkupLine("\n[bold underline darkorange]🕒 Other Orders:[/]\n");
+            AnsiConsole.MarkupLine("\n[bold underline]🕒 Other Orders:[/]\n");
             if (unpaidOrders.Count == 0)
             {
                 AnsiConsole.MarkupLine("[grey]No unpaid orders found.[/]");
@@ -106,13 +151,17 @@ namespace projekt_restauracja.Models
                     unpaidTable.AddRow(
                         order.OrderId.ToString(),
                         order.UserId,
-                        $"[orange1]{order.fullPrice:F2}[/]",
+                        $"[Orange1]{order.fullPrice:F2}[/]",
                         $"[blue]{order.Status}[/]"
                     );
                 }
 
                 AnsiConsole.Write(unpaidTable);
             }
+        }
+        public bool HasOrdersWithStatus(Order.OrderStatus status)
+        {
+            return orders.Any(o => o.Status == status);
         }
 
         public Order GetOrderById(int orderId)

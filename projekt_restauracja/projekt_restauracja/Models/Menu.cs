@@ -121,9 +121,9 @@ namespace projekt_restauracja.Models
         {
             var table = new Table();
             table.Border = TableBorder.Rounded;
-            table.AddColumn("[cyan]Category[/]");
-            table.AddColumn("[green]Dish[/]");
-            table.AddColumn("[yellow]Price (PLN)[/]");
+            table.AddColumn("[Orange1]Category[/]");
+            table.AddColumn("[Orange1]Dish[/]");
+            table.AddColumn("[Orange1]Price (PLN)[/]");
 
             int index_category = 1;
             int index_dish = 1;

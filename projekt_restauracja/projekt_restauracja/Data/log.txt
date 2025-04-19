@@ -1,0 +1,155 @@
+﻿[2025-04-19 13:13:55] User 'a' logged in.
+[2025-04-19 13:13:56] User 'a' viewed all orders.
+[2025-04-19 13:13:58] User 'a' started creating a new order.
+[2025-04-19 13:14:01] User 'a' added dish 'Coffee' to the order.
+[2025-04-19 13:14:03] User 'a' placed a new order.
+[2025-04-19 13:14:04] User 'a' viewed all orders.
+[2025-04-19 16:35:27] User 'customer' logged in.
+[2025-04-19 16:35:30] User 'customer' started creating a new order.
+[2025-04-19 16:35:34] User 'customer' added dish 'Burger' to the order.
+[2025-04-19 16:35:36] User 'customer' placed a new order.
+[2025-04-19 16:35:49] User 'customer' paid 12,00 zł for their order (orderId: 1)
+[2025-04-19 16:35:57] User 'customer' logged out.
+[2025-04-19 16:36:04] User 'chef' logged in.
+[2025-04-19 16:36:08] User 'chef' cooked an order
+[2025-04-19 16:47:33] User 'customer' logged in.
+[2025-04-19 16:47:36] User 'customer' started creating a new order.
+[2025-04-19 16:47:39] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 16:47:40] User 'customer' placed a new order.
+[2025-04-19 16:47:46] User 'customer' logged out.
+[2025-04-19 16:47:53] User 'chef' logged in.
+[2025-04-19 16:47:58] User 'chef' cooked an order
+[2025-04-19 16:48:16] User 'customer' logged in.
+[2025-04-19 16:48:19] User 'customer' started creating a new order.
+[2025-04-19 16:48:22] User 'customer' added dish 'pizza' to the order.
+[2025-04-19 16:48:23] User 'customer' placed a new order.
+[2025-04-19 16:48:30] User 'customer' logged out.
+[2025-04-19 16:48:35] User 'chef' logged in.
+[2025-04-19 16:48:39] User 'chef' cooked an order
+[2025-04-19 16:48:56] User 'chef' logged out.
+[2025-04-19 16:49:02] User 'customer' logged in.
+[2025-04-19 16:54:30] User 'customer' logged in.
+[2025-04-19 16:54:34] User 'customer' started creating a new order.
+[2025-04-19 16:54:38] User 'customer' added dish 'Coffee' to the order.
+[2025-04-19 16:54:43] User 'customer' added dish 'PannaCotta' to the order.
+[2025-04-19 16:54:44] User 'customer' placed a new order.
+[2025-04-19 16:54:50] User 'customer' logged out.
+[2025-04-19 16:54:57] User 'chef' logged in.
+[2025-04-19 16:56:41] User 'chef' logged out.
+[2025-04-19 16:56:46] User 'chef' logged in.
+[2025-04-19 16:56:54] User 'chef' cooked an order
+[2025-04-19 16:56:59] User 'chef' logged out.
+[2025-04-19 16:57:06] User 'waiter' logged in.
+[2025-04-19 17:06:28] User 'customer' logged in.
+[2025-04-19 17:06:30] User 'customer' started creating a new order.
+[2025-04-19 17:06:34] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 17:06:37] User 'customer' added dish 'lemonade' to the order.
+[2025-04-19 17:06:40] User 'customer' placed a new order.
+[2025-04-19 17:06:43] User 'customer' started creating a new order.
+[2025-04-19 17:06:48] User 'customer' added dish 'kaczka' to the order.
+[2025-04-19 17:06:49] User 'customer' placed a new order.
+[2025-04-19 17:07:00] User 'customer' logged out.
+[2025-04-19 17:07:04] User 'chef' logged in.
+[2025-04-19 17:07:09] User 'chef' cooked an order
+[2025-04-19 17:07:16] User 'chef' logged out.
+[2025-04-19 17:07:20] User 'a' logged in.
+[2025-04-19 17:07:43] User 'a' viewed all orders.
+[2025-04-19 17:07:46] User 'a' started creating a new order.
+[2025-04-19 17:07:50] User 'a' added dish 'coffee' to the order.
+[2025-04-19 17:07:55] User 'a' added dish 'lemonade' to the order.
+[2025-04-19 17:07:57] User 'a' placed a new order.
+[2025-04-19 17:07:58] User 'a' viewed all orders.
+[2025-04-19 17:08:21] User 'a' logged out.
+[2025-04-19 17:08:26] User 'customer' logged in.
+[2025-04-19 17:08:28] User 'customer' started creating a new order.
+[2025-04-19 17:08:32] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 17:08:33] User 'customer' placed a new order.
+[2025-04-19 17:08:38] User 'customer' logged out.
+[2025-04-19 17:08:43] User 'chef' logged in.
+[2025-04-19 17:08:49] User 'chef' cooked an order
+[2025-04-19 17:08:53] User 'chef' logged out.
+[2025-04-19 17:08:59] User 'waiter' logged in.
+[2025-04-19 17:09:04] User 'waiter' served an order
+[2025-04-19 17:09:12] User 'waiter' logged out.
+[2025-04-19 17:09:27] User 'customer' logged in.
+[2025-04-19 17:09:37] User 'customer' paid 26,00 zł for their order (orderId: 1)
+[2025-04-19 17:09:44] User 'customer' logged out.
+[2025-04-19 17:09:48] User 'a' logged in.
+[2025-04-19 17:09:50] User 'a' viewed all orders.
+[2025-04-19 17:10:27] User 'a' viewed all orders.
+[2025-04-19 17:40:57] User 'customer' logged in.
+[2025-04-19 17:41:01] User 'customer' started creating a new order.
+[2025-04-19 17:41:05] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 17:41:06] User 'customer' placed a new order.
+[2025-04-19 17:41:12] User 'customer' logged out.
+[2025-04-19 17:41:18] User 'a' logged in.
+[2025-04-19 17:41:19] User 'a' viewed all orders.
+[2025-04-19 17:41:28] User 'a' logged out.
+[2025-04-19 17:41:34] User 'customer' logged in.
+[2025-04-19 17:41:37] User 'customer' started creating a new order.
+[2025-04-19 17:41:40] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 17:41:45] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 17:41:45] User 'customer' placed a new order.
+[2025-04-19 17:41:50] User 'customer' logged out.
+[2025-04-19 18:37:09] User 'a' logged in.
+[2025-04-19 18:37:12] User 'a' logged out.
+[2025-04-19 18:37:18] User 'customer' logged in.
+[2025-04-19 18:37:21] User 'customer' started creating a new order.
+[2025-04-19 18:37:24] User 'customer' added dish 'pasta' to the order.
+[2025-04-19 18:37:26] User 'customer' placed a new order.
+[2025-04-19 18:37:33] User 'customer' logged out.
+[2025-04-19 18:37:42] User 'a' logged in.
+[2025-04-19 18:37:48] User 'a' viewed all orders.
+[2025-04-19 18:37:54] User 'a' logged out.
+[2025-04-19 18:37:59] User 'chef' logged in.
+[2025-04-19 18:38:03] User 'chef' cooked an order
+[2025-04-19 18:38:08] User 'chef' logged out.
+[2025-04-19 18:38:13] User 'customer' logged in.
+[2025-04-19 18:38:15] User 'customer' started creating a new order.
+[2025-04-19 18:38:19] User 'customer' added dish 'coffee' to the order.
+[2025-04-19 18:38:22] User 'customer' added dish 'kaczka' to the order.
+[2025-04-19 18:38:23] User 'customer' placed a new order.
+[2025-04-19 18:38:51] User 'customer' started creating a new order.
+[2025-04-19 18:38:54] User 'customer' added dish 'lemonade' to the order.
+[2025-04-19 18:38:56] User 'customer' placed a new order.
+[2025-04-19 18:39:03] User 'customer' logged out.
+[2025-04-19 18:39:08] User 'chef' logged in.
+[2025-04-19 18:39:12] User 'chef' cooked an order
+[2025-04-19 18:39:17] User 'chef' cooked an order
+[2025-04-19 18:39:23] User 'chef' logged out.
+[2025-04-19 18:39:31] User 'waiter' logged in.
+[2025-04-19 18:39:36] User 'waiter' served an order
+[2025-04-19 18:39:43] User 'waiter' logged out.
+[2025-04-19 18:41:27] User 'a' logged in.
+[2025-04-19 18:41:49] User 'a' viewed all orders.
+[2025-04-19 18:41:53] User 'a' paid 21,22 zł for their order (orderId: 1)
+[2025-04-19 18:41:53] User 'a' viewed all orders.
+[2025-04-19 18:42:02] User 'a' viewed all orders.
+[2025-04-19 18:42:07] User 'a' viewed all orders.
+[2025-04-19 18:42:42] User 'a' logged out.
+[2025-04-19 18:42:46] User 'waiter' logged in.
+[2025-04-19 18:42:50] User 'waiter' served an order
+[2025-04-19 18:42:55] User 'waiter' logged out.
+[2025-04-19 18:43:00] User 'a' logged in.
+[2025-04-19 18:43:10] User 'a' logged out.
+[2025-04-19 18:45:14] User 'customer' logged in.
+[2025-04-19 18:45:25] User 'customer' paid 47,00 zł for their order (orderId: 2)
+[2025-04-19 18:45:29] User 'customer' checked their orders
+[2025-04-19 18:45:34] User 'customer' paid 21,22 zł for their order (orderId: 1)
+[2025-04-19 18:45:39] User 'customer' logged out.
+[2025-04-19 18:45:43] User 'a' logged in.
+[2025-04-19 19:08:51] User 'a' logged in.
+[2025-04-19 19:13:11] User 'customer' logged in.
+[2025-04-19 19:13:15] User 'customer' started creating a new order.
+[2025-04-19 19:13:43] User 'customer' added dish 'pasta' to the order.
+[2025-04-19 19:13:48] User 'customer' added dish 'pasta' to the order.
+[2025-04-19 19:13:50] User 'customer' placed a new order.
+[2025-04-19 19:21:16] User 'customer' logged in.
+[2025-04-19 19:21:22] User 'customer' started creating a new order.
+[2025-04-19 19:26:31] User 'customer' logged in.
+[2025-04-19 19:26:35] User 'customer' started creating a new order.
+[2025-04-19 19:36:15] User 's' logged in.
+[2025-04-19 19:36:18] User 's' started creating a new order.
+[2025-04-19 19:36:23] User 's' added dish 'coffee' to the order.
+[2025-04-19 19:36:32] User 's' added dish 'lemonade' to the order.
+[2025-04-19 19:36:35] User 's' placed a new order.

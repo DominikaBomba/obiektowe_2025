@@ -25,6 +25,7 @@ namespace projekt_restauracja
     {
         static void Main()
         {
+            Logger.Init();
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             OrderManager orderManager = new OrderManager();
 
@@ -41,6 +42,7 @@ namespace projekt_restauracja
             PasswordManager.AddUser("customer2", "a", UserRole.Customer);
             PasswordManager.AddUser("customer3", "a", UserRole.Customer);
 
+
             bool exitProgram = false;
             //intro
             Console.Clear();
@@ -49,7 +51,7 @@ namespace projekt_restauracja
 
 
             string text = "🍽️ Welcome to our restaurant 🍽️";
-            table2.AddColumn("🍽️ [Yellow] Welcome to our restaurant[/] 🍽️");
+            table2.AddColumn("🍽️ [Orange1] Welcome to our restaurant[/] 🍽️");
 
 
             AnsiConsole.Render(table2);
@@ -70,12 +72,13 @@ namespace projekt_restauracja
 
             while (!exitProgram)
             {
+
                 Console.Clear();
               
                 //main menu 
 
                 var mainMenu = new SelectionPrompt<string>()
-                    .HighlightStyle("bold yellow")
+                    .HighlightStyle("bold Orange1")
                     .AddChoices("\t📝 Sign Up \n", "\t🔑 Log In\n", "\t❌ Exit");
 
                 string selectedOption = AnsiConsole.Prompt(mainMenu);
@@ -87,7 +90,7 @@ namespace projekt_restauracja
                         break;
 
                     case "\t🔑 Log In\n":
-                        LogIn();
+                        LogIn(orderManager);
                         break;
 
                     case "\t❌ Exit":
@@ -116,8 +119,8 @@ namespace projekt_restauracja
             Thread.Sleep(500);
 
             
-            string username = AnsiConsole.Ask<string>("[bold yellow]👤 Enter username:[/]");
-            string password = AnsiConsole.Ask<string>("[bold yellow]🔒 Enter password:[/]");
+            string username = AnsiConsole.Ask<string>("[bold Orange1]👤 Enter username:[/]");
+            string password = AnsiConsole.Ask<string>("[bold Orange1]🔒 Enter password:[/]");
 
             PasswordManager.AddUser(username, password, UserRole.Customer);
 
@@ -127,39 +130,44 @@ namespace projekt_restauracja
         }
 
 
-        private static void LogIn()
+        private static void LogIn(OrderManager orderManager)
         {
             Console.Clear();
 
             var headerTable = new Table()
-               .Border(TableBorder.Rounded)
-               .Centered()
-               .AddColumn("[bold]📝 Log in 📝[/]");
+                .Border(TableBorder.Rounded)
+                .Centered()
+                .AddColumn("[bold]📝 Log in 📝[/]");
 
             AnsiConsole.Render(headerTable);
 
-            string username = AnsiConsole.Ask<string>("[bold yellow]👤 Enter username:[/]");
-            string password = AnsiConsole.Ask<string>("[bold yellow]🔒 Enter password:[/]");
+            string username = AnsiConsole.Ask<string>("[bold Orange1]👤 Enter username:[/]");
+            string password = AnsiConsole.Ask<string>("[bold Orange1]🔒 Enter password:[/]");
 
             if (!PasswordManager.VerifyPassword(username, password))
             {
-                AnsiConsole.MarkupLine("\n[grey][[Press any key to continue...]][/]");
+                AnsiConsole.MarkupLine("\n[red]❌ Your username or password is wrong![/]");
+                AnsiConsole.MarkupLine("[grey][[Press any key to continue...]][/]");
                 Console.ReadKey();
-                return; 
+                return;
             }
 
-           
             var user = new User(username, PasswordManager.GetUserRoles(username));
             AnsiConsole.MarkupLine("\n✅ Logged in!");
-            Console.ReadKey();
 
-             ShowUserMenu(user);
+            LogManager.Log($"User '{username}' logged in.");
+
+          
+            Console.ReadKey();
+            ShowUserMenu(user, orderManager);
         }
 
-        private static void ShowUserMenu(User user)
+
+
+        private static void ShowUserMenu(User user, OrderManager orderManager)
         {
             bool loggedIn = true;
-            var orderManager = new OrderManager();
+           
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
@@ -171,7 +179,43 @@ namespace projekt_restauracja
                 var menuOptions = new List<string>();
                 var menuActions = new Dictionary<int, Action>();
                 Console.Clear();
-                Console.WriteLine($"You're logged in as {user.Username}!");
+
+               var headerTable = new Table()
+              .Border(TableBorder.Rounded)
+              .Centered()
+              .AddColumn($"[bold]📝 Logged in as: [/] {user.Username}");
+
+
+                List<Order> userOrderList = orderManager.GetOrders();
+                if (user.HasRole(UserRole.Customer))
+                {
+                    foreach (Order order in userOrderList)
+                    {
+                        if (order.UserId == user.Username && order.Status == Order.OrderStatus.Served)
+                        {
+                            headerTable.AddRow($"[bold Orange1]Order with id {order.OrderId} ready to eat[/]");
+                        }
+
+                    }
+                }
+                else if (user.Roles.Contains(UserRole.Chef))
+                {
+                    bool hasOrdersToCook = orderManager.HasOrdersWithStatus(Order.OrderStatus.Placed);
+                    if (hasOrdersToCook)
+                        headerTable.AddRow("[red] There are orders to cook![/]");
+                }
+                else if (user.Roles.Contains(UserRole.Waiter))
+                {
+                    bool hasOrdersToServe = orderManager.HasOrdersWithStatus(Order.OrderStatus.Cooked);
+                    if (hasOrdersToServe)
+                        headerTable.AddRow("[red] There are orders ready to serve![/]");
+                }
+
+
+
+
+                AnsiConsole.Render(headerTable);
+
 
                 int optionNumber = 1;
 
@@ -202,12 +246,21 @@ namespace projekt_restauracja
                     menuOptions.Add("Revenues");
                     menuActions[optionNumber++] = () => orderManager.DisplayOrderSummaryByStatus();
                 }
+                if (rbacSystem.HasPermission(user, Permission.ViewLogs))
+                {
+                    menuOptions.Add("Logs");
+                    menuActions[optionNumber++] = () => Logger.DisplayLogs();
+                    ;
+                }
+
 
                 // Always available options
                 menuOptions.Add("Log out");
                 menuActions[optionNumber++] = () => {
                     Console.WriteLine("Logged out");
                     loggedIn = false;
+                    LogManager.Log($"User '{user.Username}' logged out.");
+
                 };
 
                 menuOptions.Add("Exit the program");
@@ -216,17 +269,20 @@ namespace projekt_restauracja
                     Environment.Exit(0);
                 };
 
-                // Show user menu options using AnsiConsole SelectionPrompt
-                var selectionPrompt = new SelectionPrompt<string>()
-                    .Title("[green]Select an option:[/]")
-                    .AddChoices(menuOptions);
+                var mainMenu = new SelectionPrompt<string>()
+                    .HighlightStyle("bold Orange1")
+                    .AddChoices("\t📝 Sign Up \n", "\t🔑 Log In\n", "\t❌ Exit");
 
+
+                var selectionPrompt = new SelectionPrompt<string>()
+                 .Title("[bold Orange1]Select an option:[/]")
+                 .HighlightStyle("bold Orange1")
+                 .AddChoices(menuOptions.Select(option => $"{option}"));
                 string selectedOption = AnsiConsole.Prompt(selectionPrompt);
 
-                // Execute corresponding action
-                if (menuOptions.Contains(selectedOption))
+                 if (menuOptions.Contains(selectedOption))
                 {
-                    menuActions[menuOptions.IndexOf(selectedOption) + 1](); // Menu options start from 1
+                    menuActions[menuOptions.IndexOf(selectedOption) + 1](); 
                 }
 
                 Console.ReadKey();
@@ -251,12 +307,15 @@ namespace projekt_restauracja
 
                 var table = new Table();
                 table.Border = TableBorder.Rounded;
-                table.AddColumn("[yellow]Option[/]");
-                table.AddColumn("[yellow]Description[/]");
+                table.AddColumn("[Orange1]Option[/]");
+                table.AddColumn("[Orange1]Description[/]");
 
                 if (rbacSystem.HasPermission(user, Permission.DisplayOrders))
                 {
                     table.AddRow(orderOptionNumber.ToString(), "Display all orders");
+                    Console.Clear();
+                    LogManager.Log($"User '{user.Username}' viewed all orders.");
+
                     orderActions[orderOptionNumber++] = () => orderManager.DisplayAllOrders();
                 }
 
@@ -271,54 +330,70 @@ namespace projekt_restauracja
                         string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
 
                         Menu m = new Menu(filePath);
-                        m.DisplayMenu();
-
+                      
                         Order newOrder = new Order(user.Username);
+                        LogManager.Log($"User '{user.Username}' started creating a new order.");
 
-                        // Main menu options for adding dishes or placing order
                         bool addingDishes = true;
 
                         while (addingDishes)
                         {
+                            Console.WriteLine();
                             var menuPrompt = new SelectionPrompt<string>()
-                            
-                                .AddChoices("Add another dish", "Place an order");
+                                .Title("[bold]What would you like to do?[/]")
+                                 .HighlightStyle("bold Orange1")
+                                .AddChoices(
+                                    "Add dish to your order",
+                                    "Place an order"
+                                );
 
                             string selectedOption = AnsiConsole.Prompt(menuPrompt);
 
                             switch (selectedOption)
                             {
-                                case "Add another dish":
-                                    Console.Write("Name of the dish: ");
+                                case "Add dish to your order":
+                                    Console.Clear();
+                                    
+                                    m.DisplayMenu();
+                                    AnsiConsole.MarkupLine("\n🍽️ [bold]Enter the name of the dish you want to add:[/] ");
                                     string selectedDishName = Console.ReadLine();
 
                                     if (!m.Dishes.Any(d => d.Name.Equals(selectedDishName, StringComparison.OrdinalIgnoreCase)))
                                     {
-                                        Console.WriteLine("Dish not found. Please ensure you entered the correct name.");
+                                        AnsiConsole.MarkupLine("[red]❌ Dish not found. Please ensure you entered the correct name.[/]");
                                         continue;
                                     }
-
+                                    Console.Clear() ;
                                     newOrder.AddDish(m.GetDish(selectedDishName));
-                                    Console.WriteLine($"Dish '{selectedDishName}' added to your order.");
+                                    LogManager.Log($"User '{user.Username}' added dish '{selectedDishName}' to the order.");
+                                    AnsiConsole.MarkupLine($"✅ Dish [orange1]{selectedDishName}[/] added to your order.");
                                     break;
 
                                 case "Place an order":
+                                    if (newOrder.Dishes.Count == 0)
+                                    {
+                                        AnsiConsole.MarkupLine("[red]❗ You must add at least one dish before placing the order.[/]");
+                                        continue;
+                                    }
+
                                     Console.Clear();
                                     orderManager.AddOrder(newOrder);
-                                    AnsiConsole.MarkupLine("[green]✅ New order placed![/]");
+                                    LogManager.Log($"User '{user.Username}' placed a new order.");
 
-                                    // Optionally, show the details of the final order
-                                    Console.WriteLine("Your final order:");
+                                    AnsiConsole.MarkupLine("[bold underline]🧾 Your final order:[/]");
                                     newOrder.DisplayOrder();
+
                                     addingDishes = false;
                                     break;
 
                                 default:
-                                    Console.WriteLine("Invalid choice. Please try again.");
+                                    AnsiConsole.MarkupLine("[red]Invalid choice. Please try again.[/]");
                                     break;
                             }
                         }
                     };
+
+
                 }
 
 
@@ -326,6 +401,7 @@ namespace projekt_restauracja
                 {
                    
                     table.AddRow(orderOptionNumber.ToString(), "Check Order Status");
+
                     orderActions[orderOptionNumber++] = () =>
                     {
                         Console.Clear();
@@ -335,6 +411,9 @@ namespace projekt_restauracja
                             orderManager.DisplayOrdersByStatus(Order.OrderStatus.Cooked);
                         if(user.Roles.Contains(UserRole.Admin))
                             orderManager.DisplayAllOrders();
+
+                        LogManager.Log($"User '{user.Username}' checked order status.");
+
                     };
                 }
 
@@ -352,10 +431,18 @@ namespace projekt_restauracja
                         if (order != null)
                         {
                             if (user.Roles.Contains(UserRole.Chef))
+                            {
                                 order.MarkAsCooked();
+                                LogManager.Log($"User '{user.Username}' cooked an order");
+                            }
+
                             else if (user.Roles.Contains(UserRole.Waiter))
+                            {
                                 order.MarkAsServed();
+                                LogManager.Log($"User '{user.Username}' served an order");
+                            }
                             AnsiConsole.Markup("[green]Order status updated![/]");
+
                         }
                         else
                             AnsiConsole.Markup("[red]Order not found.[/]");
@@ -365,7 +452,11 @@ namespace projekt_restauracja
                 if (rbacSystem.HasPermission(user, Permission.CheckMyOrders))
                 {
                     table.AddRow(orderOptionNumber.ToString(), "Check My Orders");
-                    orderActions[orderOptionNumber++] = () => orderManager.DisplayOrdersByUserId(user.Username);
+
+                    orderActions[orderOptionNumber++] = () => {
+                        orderManager.DisplayOrdersByUserId(user.Username); 
+                        LogManager.Log($"User '{user.Username}' checked their orders"); 
+                    }; 
                 }
 
                 if (rbacSystem.HasPermission(user, Permission.PayForOrder))
@@ -381,6 +472,7 @@ namespace projekt_restauracja
                         {
                             order.MarkAsPaid();
                             AnsiConsole.Markup("[green]Order paid![/]");
+                            LogManager.Log($"User '{user.Username}' paid {order.fullPrice:C} for their order (orderId: {orderId})");
                         }
                         else
                             AnsiConsole.Markup("[red]Order not found or already paid.[/]");
@@ -393,7 +485,7 @@ namespace projekt_restauracja
                 orderActions[orderOptionNumber++] = () =>
                 {
                     manageOrders = false;
-                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                    AnsiConsole.MarkupLine("[Orange1]↩️ Returning to main menu...[/]");
                 };
 
                 AnsiConsole.Render(table);
@@ -430,14 +522,15 @@ namespace projekt_restauracja
 
                 var table = new Table();
                 table.Border = TableBorder.Rounded;
-                table.AddColumn("[yellow]Option[/]");
-                table.AddColumn("[yellow]Description[/]");
+                table.AddColumn("[Orange1]Option[/]");
+                table.AddColumn("[Orange1]Description[/]");
                 if (rbacSystem.HasPermission(user, Permission.ViewMenu))
                 {
                     Console.Clear();
                     table.AddRow(optionNumber.ToString(), "View a full menu");
                     menuActions[optionNumber++] = () =>
                     {
+                        Console.Clear();
                         m1.DisplayMenu();
                     };
                 }
@@ -448,7 +541,7 @@ namespace projekt_restauracja
                     menuActions[optionNumber++] = () =>
                     {
                         Console.Clear();
-                        AnsiConsole.Markup("[bold green]Enter dish name: [/]");
+                        AnsiConsole.Markup("[bold Orange1]Enter dish name: [/]");
 
                         string name = Console.ReadLine();
 
@@ -541,7 +634,7 @@ namespace projekt_restauracja
                 menuActions[optionNumber++] = () =>
                 {
                     manageMenu = false;
-                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                    AnsiConsole.MarkupLine("[Orange1]↩️ Returning to main menu...[/]");
                 };
 
                 AnsiConsole.Render(table);
@@ -576,8 +669,8 @@ namespace projekt_restauracja
 
                 var table = new Table();
                 table.Border = TableBorder.Rounded;
-                table.AddColumn("[yellow]Option[/]");
-                table.AddColumn("[yellow]Description[/]");
+                table.AddColumn("[Orange1]Option[/]");
+                table.AddColumn("[Orange1]Description[/]");
 
                 // Display Employees
                 table.AddRow(optionNumber.ToString(), "Display all employees");
@@ -662,7 +755,7 @@ namespace projekt_restauracja
                     );
 
                     PasswordManager.RemoveUserRole(username, roleToRemove);
-                    AnsiConsole.MarkupLine($"[yellow]⚠️ Role {roleToRemove} removed from {username}.[/]");
+                    AnsiConsole.MarkupLine($"[Orange1]⚠️ Role {roleToRemove} removed from {username}.[/]");
                 };
 
                 // Exit to Main Menu
@@ -670,7 +763,7 @@ namespace projekt_restauracja
                 employeeActions[optionNumber++] = () =>
                 {
                     manageEmployees = false;
-                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                    AnsiConsole.MarkupLine("[Orange1]↩️ Returning to main menu...[/]");
                 };
 
                 AnsiConsole.Render(table);
@@ -704,8 +797,8 @@ namespace projekt_restauracja
 
                 var table = new Table();
                 table.Border = TableBorder.Rounded;
-                table.AddColumn("[yellow]Option[/]");
-                table.AddColumn("[yellow]Description[/]");
+                table.AddColumn("[Orange1]Option[/]");
+                table.AddColumn("[Orange1]Description[/]");
 
                 // Display Customers
                 table.AddRow(optionNumber.ToString(), "Display all customers");
@@ -752,7 +845,7 @@ namespace projekt_restauracja
                 customerActions[optionNumber++] = () =>
                 {
                     manageCustomers = false;
-                    AnsiConsole.MarkupLine("[yellow]↩️ Returning to main menu...[/]");
+                    AnsiConsole.MarkupLine("[Orange1]↩️ Returning to main menu...[/]");
                 };
 
                 AnsiConsole.Render(table);
