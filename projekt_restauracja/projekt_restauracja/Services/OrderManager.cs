@@ -219,6 +219,12 @@ namespace projekt_restauracja.Models
                 order.DisplayOrder();  
             }
         }
+        public List<Order> GetOrdersByStatus(Order.OrderStatus status)
+        {
+            return orders
+                .Where(o => o.Status == status)
+                .ToList();
+        }
 
         // Displaying orders with a specific status and UserId - user can see his orders with status eg.served - so he can pay for it 
         public void DisplayOrdersByUserIdAndStatus(string userId, Order.OrderStatus status)

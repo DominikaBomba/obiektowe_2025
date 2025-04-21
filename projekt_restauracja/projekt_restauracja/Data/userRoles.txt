@@ -5,8 +5,5 @@ chef,Chef
 a,Admin
 customer,Customer
 customer2,Customer
-test,Customer
-Dominika,Customer
-Dom,Customer
-s,Customer
-test21,Customer
+politeCustomer,Customer
+Gordon,Chef

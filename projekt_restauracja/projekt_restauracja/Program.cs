@@ -477,33 +477,106 @@ namespace projekt_restauracja
                 {
                     table.AddRow(orderOptionNumber.ToString(), "Change Order Status");
                     orderActions[orderOptionNumber++] = () =>
+                    
+
+
                     {
                         Console.Clear();
-                        Order.OrderStatus statusToDisplay = user.Roles.Contains(UserRole.Chef) ? Order.OrderStatus.Placed : Order.OrderStatus.Cooked;
-                        orderManager.DisplayOrdersByStatus(statusToDisplay);
 
-                        int orderId = AnsiConsole.Ask<int>("Enter Order ID to change status: ");
-                        var order = orderManager.GetOrderById(orderId);
-                        if (order != null)
+                        if (user.Roles.Contains(UserRole.Chef))
                         {
-                            if (user.Roles.Contains(UserRole.Chef))
+                            
+                            orderManager.DisplayOrdersByStatus(Order.OrderStatus.Placed);
+                            if(orderManager.GetOrdersByStatus(Order.OrderStatus.Placed).Count == 0)
+                            {
+                                return;
+                            }
+                            int orderId = AnsiConsole.Ask<int>("Enter Order ID to change status: ");
+                            var order = orderManager.GetOrderById(orderId);
+
+                            if (order != null && order.Status == Order.OrderStatus.Placed)
                             {
                                 order.MarkAsCooked();
                                 orderManager.NotifyWaiter(order);
-                                LogManager.Log($"User '{user.Username}' cooked an order");
+                                LogManager.Log($"Chef '{user.Username}' cooked an order");
+                                AnsiConsole.Markup("[green]✅ Order status updated![/]");
                             }
+                            else
+                            {
+                                AnsiConsole.Markup("[red]❌ Order not found.[/]");
+                            }
+                        }
+                        else if (user.Roles.Contains(UserRole.Waiter))
+                        {
+                            
+                            orderManager.DisplayOrdersByStatus(Order.OrderStatus.Cooked);
+                            if(orderManager.GetOrdersByStatus(Order.OrderStatus.Cooked).Count == 0)
+                            {
+                                return;
+                            }
+                            int orderId = AnsiConsole.Ask<int>("Enter Order ID to change status: ");
+                            var order = orderManager.GetOrderById(orderId);
 
-                            else if (user.Roles.Contains(UserRole.Waiter))
+                            if (order != null && order.Status == Order.OrderStatus.Cooked)
                             {
                                 order.MarkAsServed();
-                                LogManager.Log($"User '{user.Username}' served an order");
+                                LogManager.Log($"Waiter '{user.Username}' served an order");
+                                AnsiConsole.Markup("[green]✅ Order status updated![/]");
                             }
-                            AnsiConsole.Markup("[green]Order status updated![/]");
+                            else
+                            {
+                                AnsiConsole.Markup("[red]❌ Order not found.[/]");
+                            }
+                        }
+                        else if (user.Roles.Contains(UserRole.Admin))
+                        {
+                            // Admin can choose what type of orders to update
+                            var statusChoice = AnsiConsole.Prompt(
+                                new SelectionPrompt<string>()
+                                    .Title("[bold]Select what to do:[/]")
+                                    .HighlightStyle("orange1")
+                                    .AddChoices("Cook Placed Orders", "Serve Cooked Orders")
+                            );
 
+                            Order.OrderStatus targetStatus = statusChoice == "Cook Placed Orders"
+                                ? Order.OrderStatus.Placed
+                                : Order.OrderStatus.Cooked;
+
+                            orderManager.DisplayOrdersByStatus(targetStatus);
+                            if (orderManager.GetOrdersByStatus(targetStatus).Count == 0)
+                            {
+                                return;
+                            }
+                            int orderId = AnsiConsole.Ask<int>("Enter Order ID to update status: ");
+                            var order = orderManager.GetOrderById(orderId);
+
+                            if (order != null && order.Status == targetStatus)
+                            {
+                                if (targetStatus == Order.OrderStatus.Placed)
+                                {
+                                    order.MarkAsCooked();
+                                    orderManager.NotifyWaiter(order);
+                                    LogManager.Log($"Admin '{user.Username}' marked order {orderId} as Cooked.");
+                                }
+                                else if (targetStatus == Order.OrderStatus.Cooked)
+                                {
+                                    order.MarkAsServed();
+                                    LogManager.Log($"Admin '{user.Username}' marked order {orderId} as Served.");
+                                }
+
+                                AnsiConsole.Markup("[green]✅ Order status updated![/]");
+                            }
+                            else
+                            {
+                                AnsiConsole.Markup("[red]❌ Order not found.[/]");
+                            }
                         }
                         else
-                            AnsiConsole.Markup("[red]Order not found.[/]");
-                    };
+                        {
+                            AnsiConsole.Markup("[red]❌ You do not have permission to change order status.[/]");
+                        }
+                    }
+                    ;
                 }
 
                 if (rbacSystem.HasPermission(user, Permission.CheckMyOrders))

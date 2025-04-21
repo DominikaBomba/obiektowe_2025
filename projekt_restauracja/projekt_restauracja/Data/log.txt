@@ -349,3 +349,83 @@
 [2025-04-21 18:50:20] User 'waiter' logged out.
 [2025-04-21 18:50:25] User 'customer' logged in.
 [2025-04-21 18:52:15] User 'customer' paid 17,90 zł for their order (orderId: 1)
+[2025-04-21 18:59:16] User 'Janusz Kowalski' logged in.
+[2025-04-21 18:59:37] User 'Janusz Kowalski' logged out.
+[2025-04-21 19:17:53] User 'a' logged in.
+[2025-04-21 19:19:17] User 'a' logged in.
+[2025-04-21 19:20:46] User 'a' logged in.
+[2025-04-21 19:27:38] User 'a' logged in.
+[2025-04-21 19:33:01] User 'a' viewed all orders.
+[2025-04-21 19:33:30] User 'a' viewed all orders.
+[2025-04-21 19:40:08] User 'customer' logged in.
+[2025-04-21 19:40:16] User 'customer' started creating a new order.
+[2025-04-21 19:40:19] User 'customer' added dish 'pizza' to the order.
+[2025-04-21 19:40:20] User 'customer' placed a new order.
+[2025-04-21 19:40:26] User 'customer' logged out.
+[2025-04-21 19:40:30] User 'chef' logged in.
+[2025-04-21 19:42:27] User 'customer' logged in.
+[2025-04-21 19:42:30] User 'customer' started creating a new order.
+[2025-04-21 19:42:33] User 'customer' added dish 'nazwa' to the order.
+[2025-04-21 19:42:35] User 'customer' placed a new order.
+[2025-04-21 19:42:40] User 'customer' logged out.
+[2025-04-21 19:42:42] User 'a' logged in.
+[2025-04-21 19:42:46] User 'a' viewed all orders.
+[2025-04-21 19:42:50] User 'a' checked order status.
+[2025-04-21 19:42:52] User 'a' viewed all orders.
+[2025-04-21 19:43:03] User 'a' viewed all orders.
+[2025-04-21 20:03:24] User 'customer' logged in.
+[2025-04-21 20:03:26] User 'customer' started creating a new order.
+[2025-04-21 20:03:29] User 'customer' added dish 'pizza' to the order.
+[2025-04-21 20:03:33] User 'customer' added dish 'burger' to the order.
+[2025-04-21 20:03:34] User 'customer' placed a new order.
+[2025-04-21 20:03:44] User 'customer' logged out.
+[2025-04-21 20:03:52] User 'chef' logged in.
+[2025-04-21 20:05:08] User 'a' logged in.
+[2025-04-21 20:05:16] User 'a' logged out.
+[2025-04-21 20:05:23] User 'customer' logged in.
+[2025-04-21 20:05:27] User 'customer' started creating a new order.
+[2025-04-21 20:05:31] User 'customer' added dish 'pizza' to the order.
+[2025-04-21 20:05:33] User 'customer' added dish 'burger' to the order.
+[2025-04-21 20:05:34] User 'customer' placed a new order.
+[2025-04-21 20:05:39] User 'customer' logged out.
+[2025-04-21 20:05:43] User 'chef' logged in.
+[2025-04-21 20:06:09] Chef 'chef' cooked an order
+[2025-04-21 20:11:00] User 'customer' logged in.
+[2025-04-21 20:11:04] User 'customer' started creating a new order.
+[2025-04-21 20:11:06] User 'customer' added dish 'pizza' to the order.
+[2025-04-21 20:11:09] User 'customer' added dish 'burger' to the order.
+[2025-04-21 20:11:11] User 'customer' placed a new order.
+[2025-04-21 20:11:16] User 'customer' logged out.
+[2025-04-21 20:11:22] User 'chef' logged in.
+[2025-04-21 20:11:43] Chef 'chef' cooked an order
+[2025-04-21 20:11:56] User 'chef' logged out.
+[2025-04-21 20:12:00] User 'waiter' logged in.
+[2025-04-21 20:12:16] Waiter 'waiter' served an order
+[2025-04-21 20:12:25] User 'waiter' logged out.
+[2025-04-21 20:12:30] User 'chef' logged in.
+[2025-04-21 20:12:35] User 'chef' logged out.
+[2025-04-21 20:12:50] User 'customer' logged in.
+[2025-04-21 20:12:54] User 'customer' started creating a new order.
+[2025-04-21 20:12:58] User 'customer' added dish 'coffee' to the order.
+[2025-04-21 20:13:00] User 'customer' placed a new order.
+[2025-04-21 20:13:05] User 'customer' logged out.
+[2025-04-21 20:13:09] User 'a' logged in.
+[2025-04-21 20:13:13] User 'a' viewed all orders.
+[2025-04-21 20:13:24] User 'a' viewed all orders.
+[2025-04-21 20:13:36] User 'a' viewed all orders.
+[2025-04-21 20:13:50] Admin 'a' marked order 2 as Cooked.
+[2025-04-21 20:13:51] User 'a' viewed all orders.
+[2025-04-21 20:13:56] User 'a' viewed all orders.
+[2025-04-21 20:14:03] Admin 'a' marked order 2 as Served.
+[2025-04-21 20:14:03] User 'a' viewed all orders.
+[2025-04-21 20:14:10] User 'a' viewed all orders.
+[2025-04-21 20:14:14] User 'a' viewed all orders.
+[2025-04-21 20:14:21] User 'a' viewed all orders.
+[2025-04-21 20:14:52] User 'a' viewed all orders.
+[2025-04-21 20:14:58] User 'a' viewed all orders.
+[2025-04-21 20:15:04] User 'a' logged out.
+[2025-04-21 20:15:10] User 'customer' logged in.
+[2025-04-21 20:15:32] User 'customer' paid 29,90 zł for their order (orderId: 1)
+[2025-04-21 20:15:41] User 'customer' paid 7,00 zł for their order (orderId: 2)
+[2025-04-21 20:15:47] User 'customer' logged out.
+[2025-04-21 20:15:50] User 'a' logged in.
