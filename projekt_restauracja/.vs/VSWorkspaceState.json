@@ -4,9 +4,8 @@
     "\\projekt_restauracja",
     "\\projekt_restauracja\\Data",
     "\\projekt_restauracja\\Models",
-    "\\projekt_restauracja\\obj",
     "\\projekt_restauracja\\Services"
   ],
-  "SelectedNode": "\\projekt_restauracja\\Models\\User.cs",
+  "SelectedNode": "\\projekt_restauracja\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

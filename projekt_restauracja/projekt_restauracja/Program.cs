@@ -120,7 +120,28 @@ namespace projekt_restauracja
 
             
             string username = AnsiConsole.Ask<string>("[bold Orange1]👤 Enter username:[/]");
-            string password = AnsiConsole.Ask<string>("[bold Orange1]🔒 Enter password:[/]");
+            string password;
+            while (true)
+            {
+                password = AnsiConsole.Prompt(
+                    new TextPrompt<string>("[bold Orange1]🔒 Enter password:[/]")
+                        .PromptStyle("orange1")
+                        .Secret());
+
+                string confirmPassword = AnsiConsole.Prompt(
+                    new TextPrompt<string>("[bold Orange1]🔁 Confirm password:[/]")
+                        .PromptStyle("orange1")
+                        .Secret());
+
+                if (password != confirmPassword)
+                {
+                    AnsiConsole.MarkupLine("[red]❌ Passwords do not match. Try again.[/]");
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             PasswordManager.AddUser(username, password, UserRole.Customer);
 
@@ -142,7 +163,10 @@ namespace projekt_restauracja
             AnsiConsole.Render(headerTable);
 
             string username = AnsiConsole.Ask<string>("[bold Orange1]👤 Enter username:[/]");
-            string password = AnsiConsole.Ask<string>("[bold Orange1]🔒 Enter password:[/]");
+            string password = AnsiConsole.Prompt(
+            new TextPrompt<string>("[bold Orange1]🔒 Enter password:[/]")
+                .PromptStyle("orange1")
+                .Secret());
 
             if (!PasswordManager.VerifyPassword(username, password))
             {
