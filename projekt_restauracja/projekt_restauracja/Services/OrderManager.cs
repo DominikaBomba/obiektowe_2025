@@ -240,6 +240,13 @@ namespace projekt_restauracja.Models
             }
         }
 
+        public List<Order> GetOrdersByUserIdAndStatus(string userId, Order.OrderStatus status)
+        {
+            return orders
+               .Where(o => o.UserId == userId && o.Status == status)
+               .ToList();
+        }
+
         // Function to display all orders
         public void DisplayAllOrders()
         {

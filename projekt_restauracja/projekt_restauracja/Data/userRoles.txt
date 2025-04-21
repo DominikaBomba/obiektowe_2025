@@ -10,4 +10,3 @@ Dominika,Customer
 Dom,Customer
 s,Customer
 test21,Customer
-usertest,Customer

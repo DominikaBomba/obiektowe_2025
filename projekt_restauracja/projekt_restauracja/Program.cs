@@ -523,16 +523,20 @@ namespace projekt_restauracja
                     {
                         Console.Clear();
                         orderManager.DisplayOrdersByUserIdAndStatus(user.Username, Order.OrderStatus.Served);
-                        int orderId = AnsiConsole.Ask<int>("Enter Order ID to pay: ");
-                        var order = orderManager.GetOrderById(orderId);
-                        if (order != null)
+                        if (orderManager.GetOrdersByUserIdAndStatus(user.Username, Order.OrderStatus.Served).Count >0)
                         {
-                            order.MarkAsPaid();
-                            AnsiConsole.Markup("[green]Order paid![/]");
-                            LogManager.Log($"User '{user.Username}' paid {order.fullPrice:C} for their order (orderId: {orderId})");
+                            int orderId = AnsiConsole.Ask<int>("Enter Order ID to pay: ");
+                            var order = orderManager.GetOrderById(orderId);
+                            if (order != null)
+                            {
+                                order.MarkAsPaid();
+                                AnsiConsole.Markup("[green]Order paid![/]");
+                                LogManager.Log($"User '{user.Username}' paid {order.fullPrice:C} for their order (orderId: {orderId})");
+                            }
+                            else
+                                AnsiConsole.Markup("[red]Order not found or already paid.[/]");
                         }
-                        else
-                            AnsiConsole.Markup("[red]Order not found or already paid.[/]");
+                        
                     };
 
           
