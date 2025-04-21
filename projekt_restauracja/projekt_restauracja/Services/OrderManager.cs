@@ -16,23 +16,36 @@ namespace projekt_restauracja.Models
 
         private float revenue;
 
+       
+
+        private List<string> notificationsForChef;
+        private List<string> notificationsForWaiter;
+
+       
+
         public OrderManager()
         {
             orders = new List<Order>();
             lastAdminLoginTime = DateTime.MinValue;
+            notificationsForChef = new List<string>();
+            notificationsForWaiter = new List<string>();
 
         }
+
+    
 
         public void AddOrder(Order order)
         {
             orders.Add(order);
-
+            notificationsForChef.Add(order.GetOrderName());
             revenue = 0;
             foreach (var item in orders)
             {
                 revenue += item.fullPrice;
             }
 
+           
+            
         }
 
         public List<Order> GetOrders()
@@ -243,6 +256,36 @@ namespace projekt_restauracja.Models
             foreach (var order in orders)
             {
                 order.DisplayOrder();  
+            }
+        }
+
+        public void NotifyWaiter(Order order)
+        {
+            notificationsForWaiter.Add(order.GetOrderName());
+        }
+
+        public List<string> GetNotificationsForRole(UserRole role)
+        {
+            if(role == UserRole.Chef)
+            {
+                return notificationsForChef.ToList();
+            }
+            else if (role == UserRole.Waiter)
+            {
+                return notificationsForWaiter.ToList(); 
+            }
+            return null;
+        }
+
+        public void ClearNotifications(UserRole role)
+        {
+            if (role == UserRole.Chef)
+            {
+                notificationsForChef.Clear();
+            }
+            else if (role == UserRole.Waiter)
+            {
+                notificationsForWaiter.Clear();
             }
         }
     }

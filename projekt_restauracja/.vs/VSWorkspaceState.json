@@ -5,9 +5,8 @@
     "\\projekt_restauracja\\Data",
     "\\projekt_restauracja\\Models",
     "\\projekt_restauracja\\obj",
-    "\\projekt_restauracja\\Properties",
     "\\projekt_restauracja\\Services"
   ],
-  "SelectedNode": "\\projekt_restauracja\\projekt_restauracja.csproj",
+  "SelectedNode": "\\projekt_restauracja\\Models\\User.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -152,14 +152,37 @@ namespace projekt_restauracja
                 return;
             }
 
-            var user = new User(username, PasswordManager.GetUserRoles(username));
-            AnsiConsole.MarkupLine("\n✅ Logged in!");
+            var roles = PasswordManager.GetUserRoles(username);
+            User user;
+
+            if (roles.Contains(UserRole.Chef))
+            {
+                user = new Chef(username, roles);
+            }
+            else if (roles.Contains(UserRole.Waiter))
+            {
+                user = new Waiter(username, roles);
+            }
+            else
+            {
+                user = new User(username, roles);
+                
+            }
 
             LogManager.Log($"User '{username}' logged in.");
+            AnsiConsole.MarkupLine("\n✅ Logged in!");
 
+            
+            
           
+
+            
+
             Console.ReadKey();
+           
             ShowUserMenu(user, orderManager);
+
+           
         }
 
 
@@ -179,6 +202,7 @@ namespace projekt_restauracja
                 var menuOptions = new List<string>();
                 var menuActions = new Dictionary<int, Action>();
                 Console.Clear();
+
 
                var headerTable = new Table()
               .Border(TableBorder.Rounded)
@@ -203,18 +227,21 @@ namespace projekt_restauracja
                     bool hasOrdersToCook = orderManager.HasOrdersWithStatus(Order.OrderStatus.Placed);
                     if (hasOrdersToCook)
                         headerTable.AddRow("[red] There are orders to cook![/]");
+                    
                 }
                 else if (user.Roles.Contains(UserRole.Waiter))
                 {
                     bool hasOrdersToServe = orderManager.HasOrdersWithStatus(Order.OrderStatus.Cooked);
                     if (hasOrdersToServe)
                         headerTable.AddRow("[red] There are orders ready to serve![/]");
+                    
                 }
 
-
-
-
                 AnsiConsole.Render(headerTable);
+                if (user is Chef chef)
+                    chef.ShowNotifications(orderManager.GetNotificationsForRole(UserRole.Chef));
+                else if (user is Waiter waiter)
+                    waiter.ShowNotifications(orderManager.GetNotificationsForRole(UserRole.Waiter));
 
 
                 int optionNumber = 1;
@@ -258,7 +285,12 @@ namespace projekt_restauracja
                 menuOptions.Add("Log out");
                 menuActions[optionNumber++] = () => {
                     Console.WriteLine("Logged out");
+                    if (user is Chef chefOut)
+                        orderManager.ClearNotifications(UserRole.Chef);
+                    else if (user is Waiter waiter)
+                       orderManager.ClearNotifications(UserRole.Waiter);
                     loggedIn = false;
+                   
                     LogManager.Log($"User '{user.Username}' logged out.");
 
                 };
@@ -433,6 +465,7 @@ namespace projekt_restauracja
                             if (user.Roles.Contains(UserRole.Chef))
                             {
                                 order.MarkAsCooked();
+                                orderManager.NotifyWaiter(order);
                                 LogManager.Log($"User '{user.Username}' cooked an order");
                             }
 
@@ -877,6 +910,7 @@ namespace projekt_restauracja
 
             return value;
         }
+        
     }
 
     }

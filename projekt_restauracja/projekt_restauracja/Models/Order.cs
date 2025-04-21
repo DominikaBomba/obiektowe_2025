@@ -17,6 +17,7 @@ namespace projekt_restauracja.Models
         void MarkAsServed();
         void MarkAsPaid();
         void DisplayOrder();
+        string GetOrderName();
     }
 
     public class Order : IOrder
@@ -63,8 +64,19 @@ namespace projekt_restauracja.Models
                 fullPrice -= dish.Price;
             }
         }
+        public string GetOrderName()
+        {
+            string orderDetails = $"OrderId: {this.OrderId}, Customer: {this.UserId} [";
+            foreach (var dish in dishes)
+            {
+                orderDetails += $"{dish.Name}, ";
+            }
+            orderDetails = orderDetails.TrimEnd(',', ' ');
+            orderDetails += "]";
+            return orderDetails;
+        }
 
-    
+
 
         private void ChangeStatus(OrderStatus newStatus, string message)
         {
