@@ -12,7 +12,7 @@ namespace projekt_restauracja.Models
     {
 
         private static readonly string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        private static readonly string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+        private static readonly string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
 
         private static readonly string _logFilePath = Path.Combine(projectDirectory, "Data", "log.txt");
         

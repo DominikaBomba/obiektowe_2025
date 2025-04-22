@@ -1,5 +1,0 @@
-waiter,Waiter
-chef,Chef
-customer,Customer
-customer2,Customer
-customer3,Customer

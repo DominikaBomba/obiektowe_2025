@@ -3,70 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\models\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\OrderManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Services\\OrderManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\models\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\models\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userRoles.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Data\\userRoles.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\models\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\models\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userPasswords.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Data\\userPasswords.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\log.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Data\\log.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Models\\Menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\services\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\services\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\services\\ordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\services\\ordermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Models\\Dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\services\\passwordmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\services\\passwordmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Models\\Order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\services\\rbac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\services\\rbac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\PasswordManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Services\\PasswordManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Models\\Logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|c:\\users\\nt\\documents\\github\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{3DCD5344-DF0A-4B60-A976-618F4ED1D29A}|projekt_restauracja\\projekt_restauracja.csproj|solutionrelative:projekt_restauracja\\projekt_restauracja.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\LogManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Services\\LogManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\RBAC.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Services\\RBAC.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Properties\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Properties\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\AuthenticationService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\RolePermissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\dishes.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\Data\\dishes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -76,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -84,210 +66,158 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "log.txt",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\log.txt",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Data\\log.txt",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\log.txt",
-              "RelativeToolTip": "projekt_restauracja\\Data\\log.txt",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-04-21T17:03:04.751Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Order.cs",
-              "RelativeToolTip": "projekt_restauracja\\Models\\Order.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T16:00:16.906Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "RBAC.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\RBAC.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\RBAC.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\RBAC.cs",
-              "RelativeToolTip": "projekt_restauracja\\Services\\RBAC.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:46:26.463Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Program.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Program.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Program.cs",
-              "RelativeToolTip": "projekt_restauracja\\Program.cs",
-              "ViewState": "AgIAABsCAAAAAAAAAAAAACQCAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:34:12.324Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrderManager.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\OrderManager.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\OrderManager.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\OrderManager.cs",
-              "RelativeToolTip": "projekt_restauracja\\Services\\OrderManager.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAASwOIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T15:32:32.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PasswordManager.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\PasswordManager.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\PasswordManager.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\PasswordManager.cs",
-              "RelativeToolTip": "projekt_restauracja\\Services\\PasswordManager.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAEEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:37:10.942Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Dish.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Dish.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Dish.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Dish.cs",
-              "RelativeToolTip": "projekt_restauracja\\Models\\Dish.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:34:29.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\User.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\User.cs",
-              "RelativeToolTip": "projekt_restauracja\\Models\\User.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAD4vzoAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:34:45.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "userRoles.txt",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userRoles.txt",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Data\\userRoles.txt",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userRoles.txt",
-              "RelativeToolTip": "projekt_restauracja\\Data\\userRoles.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-29T17:10:19.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Properties\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Properties\\AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Properties\\AssemblyInfo.cs",
-              "RelativeToolTip": "projekt_restauracja\\Properties\\AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T19:06:03.517Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "userPasswords.txt",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userPasswords.txt",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Data\\userPasswords.txt",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\userPasswords.txt",
-              "RelativeToolTip": "projekt_restauracja\\Data\\userPasswords.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-29T17:10:14.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Logger.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Logger.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Logger.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Logger.cs",
-              "RelativeToolTip": "projekt_restauracja\\Models\\Logger.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T19:05:20.237Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Menu.cs",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Menu.cs",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Menu.cs",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Menu.cs",
-              "RelativeToolTip": "projekt_restauracja\\Models\\Menu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:34:31.172Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
               "Title": "LogManager.cs",
               "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\LogManager.cs",
               "RelativeDocumentMoniker": "projekt_restauracja\\Services\\LogManager.cs",
               "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\LogManager.cs",
               "RelativeToolTip": "projekt_restauracja\\Services\\LogManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T19:06:24.035Z"
+              "WhenOpened": "2025-04-22T11:46:17.198Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\AuthenticationService.cs",
-              "ToolTip": "C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\AuthenticationService.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\AuthenticationService.cs",
+              "DocumentIndex": 6,
+              "Title": "OrderManager.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\OrderManager.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\OrderManager.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\OrderManager.cs",
+              "RelativeToolTip": "projekt_restauracja\\Services\\OrderManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:45:25.194Z"
+              "WhenOpened": "2025-04-22T11:46:10.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "dishes.txt",
-              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\dishes.txt",
-              "RelativeDocumentMoniker": "projekt_restauracja\\Data\\dishes.txt",
-              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Data\\dishes.txt",
-              "RelativeToolTip": "projekt_restauracja\\Data\\dishes.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-29T15:42:37.288Z"
+              "DocumentIndex": 8,
+              "Title": "RBAC.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\RBAC.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\RBAC.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\RBAC.cs",
+              "RelativeToolTip": "projekt_restauracja\\Services\\RBAC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:45:52.014Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RolePermissions.cs",
-              "DocumentMoniker": "C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\RolePermissions.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\RolePermissions.cs",
-              "ToolTip": "C:\\Users\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\RolePermissions.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Dominika Bomba\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\RolePermissions.cs",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\User.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\User.cs",
+              "RelativeToolTip": "projekt_restauracja\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T19:34:42.806Z"
+              "WhenOpened": "2025-04-22T11:44:46.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Order.cs",
+              "RelativeToolTip": "projekt_restauracja\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:44:42.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Menu.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Menu.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Menu.cs",
+              "RelativeToolTip": "projekt_restauracja\\Models\\Menu.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAQwDMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:44:19.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Logger.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Logger.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Logger.cs",
+              "RelativeToolTip": "projekt_restauracja\\Models\\Logger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:43:30.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PasswordManager.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\PasswordManager.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Services\\PasswordManager.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Services\\PasswordManager.cs",
+              "RelativeToolTip": "projekt_restauracja\\Services\\PasswordManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:37:49.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "projekt_restauracja",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
+              "RelativeDocumentMoniker": "projekt_restauracja\\projekt_restauracja.csproj",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
+              "RelativeToolTip": "projekt_restauracja\\projekt_restauracja.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-22T11:36:19.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dish.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Dish.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Models\\Dish.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Models\\Dish.cs",
+              "RelativeToolTip": "projekt_restauracja\\Models\\Dish.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:35:30.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "projekt_restauracja.AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs",
+              "RelativeToolTip": "projekt_restauracja\\obj\\Debug\\net8.0\\projekt_restauracja.AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:34:57.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Program.cs",
+              "RelativeDocumentMoniker": "projekt_restauracja\\Program.cs",
+              "ToolTip": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\Program.cs*",
+              "RelativeToolTip": "projekt_restauracja\\Program.cs*",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAQwNoAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:34:13.959Z",
+              "EditorCaption": ""
             }
           ]
         }

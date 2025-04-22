@@ -30,7 +30,7 @@ namespace projekt_restauracja
             OrderManager orderManager = new OrderManager();
 
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-              string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+              string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
 
             Menu m1 = new Menu(filePath);
@@ -216,7 +216,7 @@ namespace projekt_restauracja
             bool loggedIn = true;
            
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+            string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
             Menu m1 = new Menu(filePath);
 
@@ -382,7 +382,7 @@ namespace projekt_restauracja
                     {
                         Console.Clear();
                         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                        string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.FullName;
+                        string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
                         string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
 
                         Menu m = new Menu(filePath);

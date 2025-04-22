@@ -429,3 +429,4 @@
 [2025-04-21 20:15:41] User 'customer' paid 7,00 zł for their order (orderId: 2)
 [2025-04-21 20:15:47] User 'customer' logged out.
 [2025-04-21 20:15:50] User 'a' logged in.
+[2025-04-22 13:47:37] User 'a' logged in.
