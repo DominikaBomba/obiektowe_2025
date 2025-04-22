@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace projekt_restauracja.Models
 {
-    internal class OrderManager
+    public class OrderManager
     {
         private List<Order> orders;
         private DateTime lastAdminLoginTime;

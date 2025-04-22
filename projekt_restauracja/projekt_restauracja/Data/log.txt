@@ -431,3 +431,8 @@
 [2025-04-21 20:15:50] User 'a' logged in.
 [2025-04-22 13:47:37] User 'a' logged in.
 [2025-04-22 14:12:49] User 'a' logged in.
+[2025-04-22 14:51:16] User 'customer' logged in.
+[2025-04-22 14:51:20] User 'customer' started creating a new order.
+[2025-04-22 14:51:24] User 'customer' added dish 'coffee' to the order.
+[2025-04-22 14:51:27] User 'customer' placed a new order.
+[2025-04-22 14:51:31] User 'customer' logged out.
