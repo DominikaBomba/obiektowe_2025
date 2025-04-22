@@ -14,7 +14,5 @@
 9.99,Main,Lasagna
 19,Beverage,Lemonade
 21.22,Main,Pasta
-11.22,Main,Danie1
 19.99,Main,Pierogi
-12.1,Appetizer,Nazwa
 40,Main,kaczka

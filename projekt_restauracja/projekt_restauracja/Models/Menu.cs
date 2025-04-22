@@ -84,7 +84,7 @@ namespace projekt_restauracja.Models
 
             Dishes.Add(new Dish(name, price, category));
             Console.WriteLine($"Dodano danie: {name}");
-            SaveDishesToFile();  // Zapisz zmiany w pliku
+            SaveDishesToFile(); 
         }
 
         public void RemoveDish(string name)
@@ -94,7 +94,7 @@ namespace projekt_restauracja.Models
             {
                 Dishes.Remove(dishToRemove);
                 Console.WriteLine($"Usunięto danie: {name}");
-                SaveDishesToFile();  // Zapisz zmiany w pliku
+                SaveDishesToFile();
             }
             else
             {
@@ -109,7 +109,7 @@ namespace projekt_restauracja.Models
             {
                 dishToModify.Price = newPrice;
                 Console.WriteLine($"Zmieniono cenę dania {name} na {newPrice} zł.");
-                SaveDishesToFile();  // Zapisz zmiany w pliku
+                SaveDishesToFile();  
             }
             else
             {
@@ -128,8 +128,7 @@ namespace projekt_restauracja.Models
             int index_category = 1;
             int index_dish = 1;
             foreach (var category in Categories)
-            {
-                // Dodanie kategorii z emoji
+            {   
                 string categoryEmoji = string.Empty;
                 switch (category)
                 {
@@ -150,14 +149,14 @@ namespace projekt_restauracja.Models
                         break;
                 }
 
-                // Dodanie kategorii do tabeli
+               
                 table.AddRow($"[bold]{index_category}. {categoryEmoji} {category}[/]", "", "");
 
                 foreach (var dish in Dishes)
                 {
                     if (dish.Category == category)
                     {
-                        // Dodanie dania z ceną
+                        
                         table.AddRow("", $"{dish.Name}", $"{dish.Price:C}");
                         index_dish++;
                     }

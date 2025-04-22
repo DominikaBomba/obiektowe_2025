@@ -14,14 +14,14 @@ namespace projekt_restauracja.Models
     public class User
     {
         public string Username { get; set; }
-        //public string Password { get; set; }
+       
         public List<UserRole> Roles { get; set; }
         
 
         public User(string username, List<UserRole> roles)
         {
             Username = username;
-            //Password = password;
+        
             Roles = roles;
         }
 
@@ -43,9 +43,7 @@ namespace projekt_restauracja.Models
     {
         public Chef(string username, List<UserRole> roles) : base(username, roles)
         {
-
         }
-
         public void ShowNotifications(List<string> notifications)
         {
             if (notifications.Count > 0)

@@ -1,9 +1,6 @@
-customer3,Customer
-a,Admin
+admin,Admin
 waiter,Waiter
 chef,Chef
-a,Admin
 customer,Customer
 customer2,Customer
-politeCustomer,Customer
-Gordon,Chef
+customer3,Customer

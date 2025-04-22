@@ -9,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-
-using Spectre.Console; //by ładne tabelki były
+using Spectre.Console; 
 
 
 namespace projekt_restauracja
@@ -29,18 +28,23 @@ namespace projekt_restauracja
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             OrderManager orderManager = new OrderManager();
 
+
+            AnsiConsole.MarkupLine("[bold red]Uwaga! Proszę uruchomić tę aplikację w PowerShellu, a nie w domyślnej konsoli.[/]");
+            AnsiConsole.MarkupLine("W innych konsolach może nie wyświetlać się poprawnie.");
+            Thread.Sleep(3000);
+            Console.Clear();
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
               string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");
 
             Menu m1 = new Menu(filePath);
 
-            PasswordManager.AddUser("a", "a", UserRole.Admin);
-            PasswordManager.AddUser("waiter", "a", UserRole.Waiter);
-            PasswordManager.AddUser("chef", "a", UserRole.Chef);
-            PasswordManager.AddUser("customer", "a", UserRole.Customer);
-            PasswordManager.AddUser("customer2", "a", UserRole.Customer);
-            PasswordManager.AddUser("customer3", "a", UserRole.Customer);
+            PasswordManager.AddUser("admin", "password", UserRole.Admin);
+            PasswordManager.AddUser("waiter", "password", UserRole.Waiter);
+            PasswordManager.AddUser("chef", "password", UserRole.Chef);
+            PasswordManager.AddUser("customer", "password", UserRole.Customer);
+            PasswordManager.AddUser("customer2", "password", UserRole.Customer);
+            PasswordManager.AddUser("customer3", "password", UserRole.Customer);
 
 
             bool exitProgram = false;
@@ -65,6 +69,7 @@ namespace projekt_restauracja
             text = "🍕 From fresh pizzas to amazing pasta";
             Console.WriteLine($"\n\t {text}");
 
+           
             Console.ReadKey();
            
             Console.Clear();
@@ -269,8 +274,6 @@ namespace projekt_restauracja
 
 
                 int optionNumber = 1;
-
-                // Add options based on user roles
                 if (rbacSystem.HasPermission(user, Permission.ManageMenu) || rbacSystem.HasPermission(user, Permission.ViewMenu))
                 {
                     menuOptions.Add("Menu");

@@ -75,11 +75,11 @@ namespace projekt_restauracja.Services
                 return;
             }
 
-            // haslo
+            // password
             string hashedPassword = HashPassword(password);
             File.AppendAllText(_passwordFilePath, $"{username},{hashedPassword}\n");
 
-            // rola
+            // role
             
             if (!File.Exists(_rolesFilePath))
                 File.Create(_rolesFilePath).Dispose();
@@ -122,9 +122,7 @@ namespace projekt_restauracja.Services
         }
         public static void AddUserRole(string username, UserRole newRole)
         {
-            // Ensure the file exists before attempting to read/write
-           /* if (!File.Exists(_rolesFilePath))
-                File.Create(_rolesFilePath).Close();*/
+          
 
             List<string> lines = File.ReadAllLines(_rolesFilePath).ToList();
             bool userFound = false;
@@ -148,7 +146,7 @@ namespace projekt_restauracja.Services
                 }
             }
 
-            // If the user is not found, add a new entry
+          
             if (!userFound)
             {
                 File.AppendAllText(_rolesFilePath, $"{username},{newRole}{Environment.NewLine}");
@@ -156,7 +154,7 @@ namespace projekt_restauracja.Services
         }
         public static void RemoveUserRole(string username, UserRole roleToRemove)
         {
-            // Ensure the file exists before attempting to read/write
+           
             if (!File.Exists(_rolesFilePath))
                 return;
 
@@ -209,7 +207,7 @@ namespace projekt_restauracja.Services
             foreach (var line in lines)
             {
                 var parts = line.Split(',');
-                if (parts.Length < 2) continue;  // Skip invalid lines
+                if (parts.Length < 2) continue;
 
                 string username = parts[0];
                 List<UserRole> roles = parts.Skip(1)
@@ -253,7 +251,7 @@ namespace projekt_restauracja.Services
             foreach (var line in lines)
             {
                 var parts = line.Split(',');
-                if (parts.Length < 2) continue;  // Skip invalid lines
+                if (parts.Length < 2) continue; 
 
                 string username = parts[0];
                 List<UserRole> roles = parts.Skip(1)
@@ -261,7 +259,7 @@ namespace projekt_restauracja.Services
                                              .Select(role => (UserRole)Enum.Parse(typeof(UserRole), role))
                                              .ToList();
 
-                // Only display users with Customer role
+            
                 if (roles.Contains(UserRole.Customer))
                 {
                     hasCustomers = true;

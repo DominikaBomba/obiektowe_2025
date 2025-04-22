@@ -27,3 +27,32 @@ C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restaura
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.pdb
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.genruntimeconfig.cache
 C:\Users\NT\Documents\GitHub\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\ref\projekt_restauracja.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\projekt_restauracja.exe
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\projekt_restauracja.deps.json
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\projekt_restauracja.runtimeconfig.json
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\projekt_restauracja.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\projekt_restauracja.pdb
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\Spectre.Console.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\Spectre.Console.Cli.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\de\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\es\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\fr\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\it\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\ja\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\ko\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\pt\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\ru\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\sv\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\bin\Debug\net8.0\zh-Hans\Spectre.Console.Cli.resources.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.csproj.AssemblyReference.cache
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.AssemblyInfoInputs.cache
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.AssemblyInfo.cs
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.csproj.CoreCompileInputs.cache
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.sourcelink.json
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_.AACA31CB.Up2Date
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\refint\projekt_restauracja.dll
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.pdb
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\projekt_restauracja.genruntimeconfig.cache
+C:\Users\Dominika Bomba\source\repos\obiektowe_2025\projekt_restauracja\projekt_restauracja\obj\Debug\net8.0\ref\projekt_restauracja.dll

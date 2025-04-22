@@ -181,7 +181,6 @@ namespace projekt_restauracja.Models
         {
             return orders.FirstOrDefault(o => o.OrderId == orderId);
         }
-        // Displaying orders for specific users (a customer can display all of their orders(with status))
         public void DisplayOrdersByUserId(string userId)
         {
             var userOrders = orders.Where(o => o.UserId == userId).ToList();
@@ -252,9 +251,7 @@ namespace projekt_restauracja.Models
                .Where(o => o.UserId == userId && o.Status == status)
                .ToList();
         }
-
-        // Function to display all orders
-        public void DisplayAllOrders()
+         public void DisplayAllOrders()
         {
             if (orders.Count == 0)
             {
