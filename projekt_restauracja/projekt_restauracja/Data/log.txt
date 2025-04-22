@@ -436,3 +436,4 @@
 [2025-04-22 14:51:24] User 'customer' added dish 'coffee' to the order.
 [2025-04-22 14:51:27] User 'customer' placed a new order.
 [2025-04-22 14:51:31] User 'customer' logged out.
+[2025-04-22 20:27:41] User 'waiter' logged in.

@@ -28,11 +28,6 @@ namespace projekt_restauracja
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             OrderManager orderManager = new OrderManager();
 
-
-            AnsiConsole.MarkupLine("[bold red]Uwaga! Proszę uruchomić tę aplikację w PowerShellu, a nie w domyślnej konsoli.[/]");
-            AnsiConsole.MarkupLine("W innych konsolach może nie wyświetlać się poprawnie.");
-            Thread.Sleep(3000);
-            Console.Clear();
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
               string projectDirectory = Directory.GetParent(baseDirectory).Parent.Parent.Parent.FullName;
             string filePath = Path.Combine(projectDirectory, "Data", "dishes.txt");

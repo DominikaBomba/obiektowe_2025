@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dominika Bomba\\source\\repos\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj": {}
+    "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dominika Bomba\\source\\repos\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj": {
+    "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dominika Bomba\\source\\repos\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
+        "projectUniqueName": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
         "projectName": "projekt_restauracja",
-        "projectPath": "C:\\Users\\Dominika Bomba\\source\\repos\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
-        "packagesPath": "C:\\Users\\Dominika Bomba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dominika Bomba\\source\\repos\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\obj\\",
+        "projectPath": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\projekt_restauracja.csproj",
+        "packagesPath": "C:\\Users\\NT\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NT\\Documents\\GitHub\\obiektowe_2025\\projekt_restauracja\\projekt_restauracja\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dominika Bomba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

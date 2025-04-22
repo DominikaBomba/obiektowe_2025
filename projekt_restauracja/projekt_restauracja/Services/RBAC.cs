@@ -59,7 +59,7 @@ namespace projekt_restauracja.Services
         ViewLogs //only admin
 
     }
-    internal class RBAC
+    public class RBAC
     {
 
         private readonly Dictionary<UserRole, List<Permission>> _rolePermissions;
