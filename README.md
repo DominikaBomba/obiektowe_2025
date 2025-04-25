@@ -1,24 +1,35 @@
-Autorzy: Dominika Bomba i Nikodem Jokiel
+Authors: Dominika Bomba and Nikodem Jokiel
 
-Konsolowa aplikacja restauracyjna stworzona w C# z użyciem biblioteki Spectre.Console. Umożliwia zarządzanie użytkownikami, zamówieniami, statusem zamówień oraz generowanie podsumowań przychodów.
+Console-Based Restaurant Application
+Object-oriented application developed in C# with .NET 8.0.
+It enables user management, order handling, order status tracking, and revenue summary generation.
 
-Funkcje
+-----Features used-----
+delegates, events, interfaces, class inheritance,
+RBAC system, password hashing, file saving.
 
-Rejestracja i logowanie użytkowników z rolami: Admin, Klient, Kelner, Kucharz
-Składanie, gotowanie, podawanie i opłacanie zamówień
-Wyświetlanie powiadomień dla kelnera i kucharza
-Tabela przychodów i wykres zamówień
-Obsługa wielu statusów zamówień (Placed, Cooked, Served, Paid)
-Jak uruchomić
+----Tests----
+Unit tests were implemented using xUnit.
 
-Otwórz projekt w Visual Studio
-Upewnij się, że masz zainstalowany .NET 8.0
-Uruchom projekt (F5 lub Ctrl+F5)
-Struktura projektu
+----Features----
+User registration and login with roles: Admin, Customer, Waiter, Cook
+Placing, cooking, serving, and paying for orders
+Notifications for waiters and cooks
+Revenue table and order chart
+Support for multiple order statuses (Placed, Cooked, Served, Paid)
 
-Models – klasy danych (np. Order, User, OrderManager)
-Services – logika zarządzania, np. UserManager, LogManager
-Program.cs – punkt wejścia aplikacji
-Biblioteki
+----How to Run----
+Open the project in Visual Studio
+Make sure .NET 8.0 is installed
+Run the project (F5 or Ctrl+F5)
 
-Spectre.Console – estetyczne tabele, wykresy i kolory w konsoli
+----Project Structure----
+Models – data classes (e.g., Order, User, OrderManager)
+Services – logic management, e.g., UserManager, LogManager
+Program.cs – application entry point
+Tests – unit tests created using xUnit
+
+----Libraries----
+Spectre.Console – aesthetic tables, charts, and colors in the console
+xUnit – for unit testing key functionalities
+
