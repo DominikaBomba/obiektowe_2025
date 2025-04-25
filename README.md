@@ -1,4 +1,5 @@
 Authors: Dominika Bomba and Nikodem Jokiel
+DOCUMENTATION -> 📄 [View Documentation (PDF)](Documentation.pdf)
 
 Console-Based Restaurant Application
 Object-oriented application developed in C# with .NET 8.0.
